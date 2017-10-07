@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>防汛界面</title>
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../CSS/font-awesome.css" rel="stylesheet">
+    <link href="../CSS/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../CSS/animate.css" rel="stylesheet">
+    <link href="../CSS/style.css" rel="stylesheet">
+    <link href="../CSS/newlist.css" rel="stylesheet">
+    
+</head>
+<body>
+<div class="wrapper wrapper-content animated fadeInRight">
+        
+      <div class="ibox-content">
+                
+              <div class="h4">当前位置：首页>新闻动态</div>
+              <div class="example1">
+                               
+                   <table id="exampleTablePagination"> </table>
+              </div>
+                       
+            </div>
+       <div class = "query" align="right">
+       		  <button type="button" class="btn btn-primary" style="color:red"> <a href="query.html" style="color:white">查询各单位发送的新闻数量</a></button>
+       </div>
+    </div>
+
+    <script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/content.js"></script>
+
+    <script>
+    $.ajax({
+        url:"../News.do",             //调用哪个数据库
+        dataType:"text",
+        success:function(result){
+            var data = eval(result);
+            for(var i=0;i<data.length;i++){
+            	data[i].time = data[i].time.split(".")[0];
+            }
+            $.extend($.fn.bootstrapTable.columnDefaults, {
+                sortable: true            //是否启用排序
+            });
+
+            $('#exampleTablePagination').bootstrapTable({
+                data:data,
+                search: true,             //是否显示表格搜索，此搜索是客户端搜索，不会进入服务端
+                pagination: true,         //分页
+                showRefresh: true,        //是否显示刷新按钮
+                showToggle: false,        //是否显示详细视图和列表视图的切换按钮
+                showColumns: true,        //是否显示所有列
+                showHeader:false,
+                iconSize: 'outline',
+                sortName:'time',
+                sortOrder:'desc',         //排序方式
+                pageList:[10,15,20],
+                undefinedText:"数据异常！",
+                toolbar: '#exampleTableEventsToolbar',
+                icons: {
+                    refresh: 'glyphicon-repeat',
+                    toggle: 'glyphicon-list-alt',
+                    columns: 'glyphicon-list'
+                },
+                columns: [
+                {
+                    field: 'title',
+                    title: '新闻标题',
+
+                    cellStyle:function cellStyle(value, row, index, field) {
+                        return {
+                            css: {"border": "0px solid #e4eaec","class":"zuobian"}
+                        };
+                    },
+                    formatter:function(value,row,index){
+                    	value = "<a href='news.html?id="+row.iD+"'>"+value+"</a>";
+                    	return value;
+                    }
+                }, 
+                {
+                    field: 'time',
+                    title: '发布时间',
+                    
+                    cellStyle:function cellStyle(value, row, index, field) {
+                        return {
+                            css: {"border": "0px solid #e4eaec", "width":"215px",
+                            "class":"youbian","text-align":"right" }
+                        };
+                    }
+                }
+                ]
+            });
+        },
+        error:function(){
+        }
+    });
+       
+    </script>
+
+</body>
+</html>

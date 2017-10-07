@@ -1,0 +1,14 @@
+C:\Users\zoezoe\Desktop\juheWeather\juheWeather\bin\juheWeather.dll
+C:\Users\zoezoe\Desktop\juheWeather\juheWeather\bin\juheWeather.pdb
+C:\Users\zoezoe\Desktop\juheWeather\juheWeather\obj\Debug\juheWeather.dll
+C:\Users\zoezoe\Desktop\juheWeather\juheWeather\obj\Debug\juheWeather.pdb
+G:\360云盘\做过的程序\WebService\juheWeather\juheWeather\bin\juheWeather.dll
+G:\360云盘\做过的程序\WebService\juheWeather\juheWeather\bin\juheWeather.pdb
+G:\360云盘\做过的程序\WebService\juheWeather\juheWeather\obj\Debug\juheWeather.dll
+G:\360云盘\做过的程序\WebService\juheWeather\juheWeather\obj\Debug\juheWeather.pdb
+G:\360云盘\做过的程序\WebService\juheWeather\juheWeather\obj\Debug\juheWeather.csprojResolveAssemblyReference.cache
+E:\workspace\vsworkspace\juheWeather\juheWeather\bin\juheWeather.dll
+E:\workspace\vsworkspace\juheWeather\juheWeather\bin\juheWeather.pdb
+E:\workspace\vsworkspace\juheWeather\juheWeather\obj\Debug\juheWeather.csprojResolveAssemblyReference.cache
+E:\workspace\vsworkspace\juheWeather\juheWeather\obj\Debug\juheWeather.dll
+E:\workspace\vsworkspace\juheWeather\juheWeather\obj\Debug\juheWeather.pdb

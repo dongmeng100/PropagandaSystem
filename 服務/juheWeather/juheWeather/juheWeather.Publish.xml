@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="http://localhost/juheWeather" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="juheWeather" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="Web.config" publishTime="02/06/2015 10:48:37" />
+    <file relUrl="ChinaWeather.aspx.designer.cs" publishTime="08/24/2014 09:36:42" />
+    <file relUrl="Service1.asmx.cs" publishTime="02/06/2015 10:47:06" />
+    <file relUrl="Web.Debug.config" publishTime="08/11/2014 22:02:09" />
+    <file relUrl="BJweather.aspx.cs" publishTime="02/06/2015 10:45:10" />
+    <file relUrl="BJair.aspx.designer.cs" publishTime="08/24/2014 23:59:59" />
+    <file relUrl="juheWeather.csproj.user" publishTime="02/06/2015 10:47:09" />
+    <file relUrl="bin/juheWeather.dll" publishTime="02/06/2015 10:47:09" />
+    <file relUrl="bjWeather.asmx.cs" publishTime="02/06/2015 10:45:22" />
+    <file relUrl="juheWeather.Publish.xml" publishTime="02/06/2015 10:43:44" />
+    <file relUrl="BJair.aspx.cs" publishTime="02/06/2015 10:45:08" />
+    <file relUrl="juheWeather.csproj" publishTime="02/06/2015 10:47:09" />
+    <file relUrl="BJair.aspx" publishTime="08/24/2014 23:59:58" />
+    <file relUrl="bjWeather.asmx" publishTime="08/23/2014 10:10:00" />
+    <file relUrl="Service1.asmx" publishTime="08/11/2014 22:02:09" />
+    <file relUrl="BJweather.aspx" publishTime="08/23/2014 10:48:27" />
+    <file relUrl="BJweather.aspx.designer.cs" publishTime="08/23/2014 10:48:29" />
+    <file relUrl="ChinaWeather.aspx" publishTime="08/24/2014 09:36:41" />
+    <file relUrl="bin/juheWeather.pdb" publishTime="02/06/2015 10:47:09" />
+    <file relUrl="Web.Release.config" publishTime="08/11/2014 22:02:09" />
+    <file relUrl="Properties/AssemblyInfo.cs" publishTime="08/11/2014 22:02:09" />
+    <file relUrl="ChinaWeather.aspx.cs" publishTime="02/06/2015 10:45:11" />
+  </publishProfile>
+</publishData>

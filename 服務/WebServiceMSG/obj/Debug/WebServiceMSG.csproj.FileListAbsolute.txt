@@ -1,0 +1,10 @@
+C:\Users\zoezoe\Desktop\WebServiceMSG\WebServiceMSG\bin\WebServiceMSG.dll
+C:\Users\zoezoe\Desktop\WebServiceMSG\WebServiceMSG\bin\WebServiceMSG.pdb
+C:\Users\zoezoe\Desktop\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.dll
+C:\Users\zoezoe\Desktop\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.pdb
+C:\Users\zoezoe\Desktop\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.csprojResolveAssemblyReference.cache
+G:\360云盘\做过的程序\WebService\WebServiceMSG\WebServiceMSG\bin\WebServiceMSG.dll
+G:\360云盘\做过的程序\WebService\WebServiceMSG\WebServiceMSG\bin\WebServiceMSG.pdb
+G:\360云盘\做过的程序\WebService\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.csprojResolveAssemblyReference.cache
+G:\360云盘\做过的程序\WebService\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.dll
+G:\360云盘\做过的程序\WebService\WebServiceMSG\WebServiceMSG\obj\Debug\WebServiceMSG.pdb

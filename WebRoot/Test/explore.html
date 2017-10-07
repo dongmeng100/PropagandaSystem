@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>慕课网教程之浏览器博物馆</title>
+  <link href="bootstrap.min.css" rel="stylesheet">
+  <style>
+    body{
+      padding-top: 50px;
+    }
+    .carousel{
+      background-color: #000;
+      height: 500px;
+      margin-bottom: 60px;
+    } 
+    .carousel .item{
+      background-color: #000;
+      height: 500px;
+    } 
+    .carousel .img{
+      width: 100%;
+    } 
+
+    .carousel-inner>.item>img{
+      height: 130%;
+      width: 100%;
+    }
+    .carousel-caption{
+      margin-bottom: 20px;
+      font-size: 40px;
+      color: #fafafa;
+      letter-spacing: 0;
+      text-shadow: 0px 1px 0px #999, 0px 2px 0px #888, 0px 3px 0px #777, 0px 4px 0px #666, 0px 5px 0px #555, 0px 6px 0px #444, 0px 7px 0px #333, 0px 8px 7px #001135 
+    }
+    #circle-img-label .col-md-4{
+      text-align: center;
+    }
+    .col-md-4 .img-circle{
+      width: 50%;
+      height:auto;
+    }
+    
+  </style>
+</head>
+<body>
+ <nav class="navbar navbar-default navbar-fixed-top navbar-inverse"><!--nav标签表示导航条，navbar是导航条类，navbar-default是导航条采用默认参数-->
+  <div class="container"><!--一个bootstrap块状容器-->
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header"><!--导航条的头部商标内容-->
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Brand</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><!--导航菜单-->
+      <ul class="nav navbar-nav navbar-right">
+        <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li><!--定义活动菜单-->
+        <li class="dropdown"><!--下拉菜单-->
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a href="#">Action</a></li>
+            <li><a href="#">Another action</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li role="separator" class="divider"></li><!--下拉框分割线-->
+            <li><a href="#">Separated link</a></li>
+            <li role="separator" class="divider"></li>
+            <li><a href="#">One more separated link</a></li>
+          </ul>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search"><!--搜索框和搜索按钮-->
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-->
+</nav>
+
+<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <!-- 轮播插件-->
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="3"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="4"></li>
+  </ol>
+
+  <!-- Wrapper for slides -->
+  <div class="carousel-inner" role="listbox">
+    <div class="item active">
+      <img src="./Image/1.jpg" alt="1 slide">
+      <div class="carousel-caption">
+        星空夜色
+      </div>
+    </div>
+    <div class="item">
+      <img src="./Image/2.jpg" alt="2 slide">
+      <div class="carousel-caption">
+        世界硝烟
+      </div>
+    </div>
+    <div class="item">
+      <img src="./Image/3.jpg" alt="3 slide">
+      <div class="carousel-caption">
+        生命之树
+      </div>
+    </div>
+    <div class="item">
+      <img src="./Image/4.jpg" alt="4 slide">
+      <div class="carousel-caption">
+        书香墨梅
+      </div>
+    </div>
+    <div class="item">
+      <img src="./Image/5.jpg" alt="5 slide">
+      <div class="carousel-caption">
+        高山青田
+      </div>
+    </div>
+  </div>
+
+  <!-- Controls -->
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+    <span class="sr-only">上一页</span>
+  </a>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+    <span class="sr-only">下一页</span>
+  </a>
+</div>
+<div class="container" id="circle-img-label">
+  <div class="row">
+    <div class="col-md-4">
+      <img class="img-circle" src="./Image/哈士奇.jpg" alt="哈士奇">
+      <h2>哈士奇</h2>
+      <p>哈士奇是一种中型犬。西伯利亚雪橇犬是原始的古老犬种，在西伯利亚东北部、格陵兰南部生活。哈士奇名字的由来，是源自其独特的嘶哑叫声。</p>
+    </div>
+    <div class="col-md-4">
+      <img class="img-circle" src="./Image/柴犬.jpg" alt="柴犬">
+      <h2>柴犬</h2>
+      <p>柴犬是体型中等并且又最古老的犬。柴犬能够应付陡峭的丘陵和山脉的斜坡，拥有灵敏的感官，使得柴犬屡次成为上乘的猎狩犬。</p>
+    </div>
+    <div class="col-md-4">
+      <img class="img-circle" src="./Image/秋田犬.jpg" alt="秋田犬">
+      <h2>秋田犬</h2>
+      <p>秋田犬是日本国犬，是日本犬的一种，是国家天然纪念物之六种日本犬中唯一的大型犬种。在日本是以对饲主忠诚闻名的家庭宠物犬。</p>
+    </div>
+  </div>
+
+  <hr>
+</div>
+
+
+<script src="jquery.min.js"></script>
+<script src="bootstrap.min.js"></script>
+</body>
+</html>

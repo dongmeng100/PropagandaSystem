@@ -1,0 +1,13 @@
+RainData：需要修改數據庫連接字段
+
+FldwordKT：需要修改接入主機的字段。並且在主機上由office程序的前提現免才可以使用
+
+FldRainValue：需要修改數據庫連接字段
+
+fldwordchart
+
+
+
+ws:登陸服務需要修改連接字段，
+
+

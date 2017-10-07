@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN" "http://java.sun.com/dtd/web-app_2_3.dtd">
+<web-app>
+  <servlet>
+    <servlet-name>newsupload</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.newsupload</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>News</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.News</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>SingleNews</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.SingleNews</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NewsDelete</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.NewsDelete</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>NewsUpdate</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.NewsUpdate</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>VideoUpload</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.VideoUpload</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>VideoPreview</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.VideoPreview</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>deleteVideo</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.deleteVideo</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Carousel</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.Carousel</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>getCarousels</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.getCarousels</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Downloadpage</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.Downloadpage</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Login</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.Login</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>Street_News</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.Street_News</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>statistic</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>com.propaganda.servlet.statistic</servlet-class>
+  </servlet>
+
+
+
+
+
+
+
+
+  <servlet-mapping>
+    <servlet-name>newsupload</servlet-name>
+    <url-pattern>/newsupload.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>News</servlet-name>
+    <url-pattern>/News.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>SingleNews</servlet-name>
+    <url-pattern>/SingleNews.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewsDelete</servlet-name>
+    <url-pattern>/NewsDelete.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>NewsUpdate</servlet-name>
+    <url-pattern>/NewsUpdate.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VideoUpload</servlet-name>
+    <url-pattern>/VideoUpload.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>VideoPreview</servlet-name>
+    <url-pattern>/VideoPreview.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>deleteVideo</servlet-name>
+    <url-pattern>/deleteVideo.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Carousel</servlet-name>
+    <url-pattern>/Carousel.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>getCarousels</servlet-name>
+    <url-pattern>/getCarousels.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Downloadpage</servlet-name>
+    <url-pattern>/Downloadpage.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Login</servlet-name>
+    <url-pattern>/Login.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>Street_News</servlet-name>
+    <url-pattern>/Street_News.do</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>statistic</servlet-name>
+    <url-pattern>/statistic.do</url-pattern>
+  </servlet-mapping>
+  
+  <welcome-file-list>
+  	<welcome-file>index.html</welcome-file>
+  </welcome-file-list>
+
+</web-app>

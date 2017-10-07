@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <title>Leaflet DEMO</title>
+  <meta http-equiv="Access-Control-Allow-Origin" content="*">
+  <meta http-equiv=Content-Type content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+  <link rel="stylesheet" href="leaflet.css" />
+  <style type="text/css">
+    html,body{
+      padding: 0;
+      margin: 0;
+      height:100%;
+      width:100%;
+    }
+    #map{
+      position:absolute; top:0; bottom:0; width:100%;
+    }  
+  </style>
+</head>
+
+<body>
+  <div id="map">
+  </div>
+  <script src="leaflet.js"></script>
+  <script src="XCData.js"></script>
+  <script>
+    var map = L.map('map').setView([39.92, 116.35],13);
+    var tilelayer = L.tileLayer('http://{s}.tiles.mapbox.com/v3/spatialdev.map-c9z2cyef/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      foo:'far',
+      
+    }).addTo(map);
+    var drawdata = [];
+    for(var i=0;i<XC_Data.length;i++){
+      drawdata.push([XC_Data[i][1],XC_Data[i][0]]);
+    }
+    L.polyline(drawdata,{color:'red',weight:5}).addTo(map);
+  </script>
+</body>
+</html>

@@ -1,0 +1,521 @@
+<!DOCTYPE html>
+<!--[if IE 8 ]>    <html class="ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"/>
+<meta name="keywords" content="radioactive buttons, rgba buttons, CSS3 buttons, animated css buttons"/>
+<meta name="description" content="Create killer button focus effects using some very simple RGBa colors and -webkit-animations."/>
+<meta name="author" content=" ZURB, inc."/>
+<meta name="copyright" content="ZURB, inc. Copyright (c) 2016"/>
+<meta name="verify-v1" content="FIGJ61mNGm8gsksgklVzG71j7+Q0u6zTDF+VE9vA/8k="/>
+<link rel="apple-touch-icon-precomposed" sizes="57x57" href="/playground/assets/apple-icons/touch-icon-iphone-62abe0cdf7cdb268f32461f9e48a23c4.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/playground/assets/apple-icons/touch-icon-ipad-7b1c7683ce9b947aef5438684d8866fd.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/playground/assets/apple-icons/touch-icon-iphone-retina-82c632d82262f8d8a739f24a7c26da07.png"/>
+<link rel="apple-touch-icon-precomposed" sizes="144x144" href="/playground/assets/apple-icons/touch-icon-ipad-retina-7482693019c5e4d3e8d1feffe719e6c7.png"/>
+<link rel="shortcut icon" href="/playground/assets/icons/favicon-a1157e85ba46f377078d433981148c94.ico">
+<title>Radioactive Buttons with RGBa and Animations | Playground from ZURB</title>
+<script>
+      var categoryId = null;
+    </script>
+<link href="/playground/assets/application-0a4612c94ae76bed5ff5ff7dee2c99d9.css" media="screen" rel="stylesheet"/>
+<link href="/playground/assets/foundicons-06a2aad07c2e05db7e3b1c88a0cc0b2a.css" media="screen" rel="stylesheet"/>
+<script src="/playground/assets/vendor/custom.modernizr-fce4dc4d109f12709c12011404f30b78.js"></script>
+<script type="text/javascript">
+
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-2195009-29', 'auto'); // Playground
+  ga('create', 'UA-2195009-43', 'auto', {'name': 'studiosLevel'}); // Studios
+  ga('create', 'UA-2195009-33', 'auto', {'name': 'universityLevel'}); // University
+  ga('create', 'UA-2195009-2', 'auto', {'name': 'zurbLevel'}); // ZURB
+  
+  ga('send', 'pageview'); // Playground
+  ga('studiosLevel.send', 'pageview'); // Studios
+  ga('universityLevel.send', 'pageview'); // University
+  ga('zurbLevel.send', 'pageview'); // ZURB
+
+</script>
+<meta content="authenticity_token" name="csrf-param"/>
+<meta content="+QP1zOZz6UdO/uIK3OmUsxP4mSToYv8wbBkDsMUo1iI=" name="csrf-token"/>
+</head>
+<body class="off-canvas hide-extras antialiased dark-page">
+<section role="main" class="body">
+ 
+<nav class="global-nav show-for-small">
+<ul class="title-area">
+<li class="name">
+<h1><a class="sidebar-button show-for-small services" id="sidebarButton" href="#sidebar"><img alt="Menu icon" src="/playground/assets/icons/menu-icon-05ed101790615db3eeadb7a569cb56d0.png"/>ZURB <strong>Studios</strong></a></h1>
+</li>
+</ul>
+</nav>
+ 
+ 
+<nav class="top-bar hide-for-small">
+<ul>
+ 
+<li class="name">
+<h1><a href="/studios">ZURB <strong>Studios</strong></a></h1>
+</li>
+<li class="toggle-topbar"><a href="#"></a></li>
+</ul>
+<section>
+ 
+<ul class="right hide-for-small">
+<li><a href="http://zurb.com/studios/working-together">Approach</a></li>
+<li><a href="http://zurb.com/studios/our-work">Work</a></li>
+<li><a href="http://zurb.com/wired">Wired</a></li>
+<li><a href="http://zurb.com/playground" class="current">Playground</a></li>
+<li><a href="http://zurb.com/studios/who-we-are">About</a></li>
+<li><a href="http://zurb.com/studios/contact">Contact</a></li>
+</ul>
+</section>
+</nav>
+ 
+<style type="text/css">
+.transparent.header{background:#333;}
+section[role="main"]{background:#333;color:#fff;}
+section[role="main"] h1{color:#fff;}
+section[role="main"] h2{color:#fff;}
+section[role="main"] h3{color:#fff;}
+.button{margin-right:0.5em;border-radius:4px;}
+ol{margin-left:2em;}
+div#sidebarAd.cleanslate{background:#444!important;color:#fff!important;}
+div#sidebarAd.cleanslate .ad-sponsor{color:#ccc!important;}
+.zurb-footer-top{background:#222;}
+@-webkit-keyframes bigAssButtonPulse{
+  from{background-color:#749a02;-webkit-box-shadow:0 0 25px #333;}
+  50%{background-color:#91bd09;-webkit-box-shadow:0 0 50px #91bd09;}
+  to{background-color:#749a02;-webkit-box-shadow:0 0 25px #333;}
+}
+@-webkit-keyframes greenPulse{
+  from{background-color:#749a02;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#91bd09;-webkit-box-shadow:0 0 18px #91bd09;}
+  to{background-color:#749a02;-webkit-box-shadow:0 0 9px #333;}
+}
+@-webkit-keyframes bluePulse
+{
+  from{background-color:#007d9a;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#2daebf;-webkit-box-shadow:0 0 18px #2daebf;}
+  to{background-color:#007d9a;-webkit-box-shadow:0 0 9px #333;}
+}
+@-webkit-keyframes redPulse{
+  from{background-color:#bc330d;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#e33100;-webkit-box-shadow:0 0 18px #e33100;}
+  to{background-color:#bc330d;-webkit-box-shadow:0 0 9px #333;}
+}
+@-webkit-keyframes magentaPulse{
+  from{background-color:#630030;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#a9014b;-webkit-box-shadow:0 0 18px #a9014b;}
+  to{background-color:#630030;-webkit-box-shadow:0 0 9px #333;}
+}
+@-webkit-keyframes orangePulse{
+  from{background-color:#d45500;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#ff5c00;-webkit-box-shadow:0 0 18px #ff5c00;}
+  to{background-color:#d45500;-webkit-box-shadow:0 0 9px #333;}
+}
+@-webkit-keyframes orangellowPulse{
+  from{background-color:#fc9200;-webkit-box-shadow:0 0 9px #333;}
+  50%{background-color:#ffb515;-webkit-box-shadow:0 0 18px #ffb515;}
+  to{background-color:#fc9200;-webkit-box-shadow:0 0 9px #333;}
+}
+a.button{-webkit-animation-duration:2s;-webkit-animation-iteration-count:infinite;}.green.button{-webkit-animation-name:greenPulse;-webkit-animation-duration:3s;}.blue.button{-webkit-animation-name:bluePulse;-webkit-animation-duration:4s;}.red.button{-webkit-animation-name:redPulse;-webkit-animation-duration:1s;}.magenta.button{-webkit-animation-name:magentaPulse;-webkit-animation-duration:2s;}.orange.button{-webkit-animation-name:orangePulse;-webkit-animation-duration:3s;}.orangellow.button{-webkit-animation-name:orangellowPulse;-webkit-animation-duration:5s;}.wall-of-buttons{text-align:center;margin-top:2em;margin-bottom:2em;}</style>
+<div id="radioactive-buttons-page" class="dark-code">
+ 
+<div class="row project-header">
+<div class="large-8 columns">
+<h1>Radioactive Buttons</h1>
+<p class="lead">Create awesome looking and engaging buttons by using CSS animations to give them all that radioactive feel.</p>
+<p><small>Note: Demo works best in Safari 4.x and Chrome and, um, not so much in Firefox 3.5.</small></p>
+</div>
+<div class="large-4 columns">
+<script id="ZURBsmallAd" data-orientation="" src="http://zurb.com/ads/ZURBsmallAd.js"></script>
+</div>
+</div>
+ 
+ 
+<div class="row">
+<div class="large-12 columns wall-of-buttons">
+<a class="green button">Look at me!</a>
+<a class="blue button">Click me!</a>
+<a class="magenta button">Hi ho, Silver!</a>
+<a class="green button">Look at me!</a>
+<a class="red button">I'm Glowing!</a>
+<a class="magenta button">Hi ho, Silver!</a>
+<a class="orange button">Call to Action</a>
+<a class="magenta button">Hi ho, Silver!</a>
+<a class="green button">Look at me!</a>
+<a class="orangellow button">Got clicks?</a>
+<a class="blue button">Click me!</a>
+<a class="red button">I'm Glowing!</a>
+<a class="blue button">Click me!</a>
+<a class="magenta button">Hi ho, Silver!</a>
+<a class="orangellow button">Got clicks?</a>
+<a class="red button">I'm Glowing!</a>
+<a class="orange button">Call to Action</a>
+<a class="green button">Look at me!</a>
+<a class="orangellow button">Got clicks?</a>
+<a class="red button">I'm Glowing!</a>
+<a class="blue button">Click me!</a>
+<a class="orangellow button">Got clicks?</a>
+<a class="blue button">Click me!</a>
+<a class="red button">I'm Glowing!</a>
+<a class="orange button">Call to Action</a>
+<a class="orangellow button">Got clicks?</a>
+</div>
+</div>
+ 
+ 
+<div class="row">
+<div class="large-6 columns">
+<h2>This Is How We Do It</h2>
+<p>Using CSS animations in Safari, we're able to turn an otherwise ordinary button into a glowing, radioactive mess of awesome. Don't see the radioactive above? Be sure you're in Safari before getting underway.</p>
+<p>For each button, we specify three things:</p>
+<ol>
+<li>Animation name (we'll show this later)</li>
+<li>Animation duration</li>
+<li>And the number of times it repeats (iteration count)</li>
+</ol>
+<p>You can see how these come together on the right. The CSS calls a pre-defined animation you create, assigns it a duration, and tells it how long to repeat. Pretty sweet, right?</p>
+<p>To make it work, we first specify all our button styles (done in our global styles for ZURB.com) and then we added the shadows. Now, in the animation, we switch from a box-shadow that matches the background color to the color of the button to give it the glowing effect.</p>
+<p>And when we add in the animations, bam! Radioactive buttons.</p>
+</div>
+<div class="large-6 columns">
+<h3>1. Create Your Animation</h3>
+<div class='css'><div class="CodeRay">
+<div class="code"><pre>
+<span class="directive">@-webkit-keyframes</span> <span class="tag">greenPulse</span> {
+  <span class="key">from</span> { <span class="key">background-color</span>: <span class="color">#749a02</span>; <span class="key">-webkit-box-shadow</span>: <span class="float">0</span> <span class="float">0</span> <span class="float">9px</span> <span class="color">#333</span>; }
+  <span class="float">50%</span> { <span class="key">background-color</span>: <span class="color">#91bd09</span>; <span class="key">-webkit-box-shadow</span>: <span class="float">0</span> <span class="float">0</span> <span class="float">18px</span> <span class="color">#91bd09</span>; }
+  <span class="key">to</span> { <span class="key">background-color</span>: <span class="color">#749a02</span>; <span class="key">-webkit-box-shadow</span>: <span class="float">0</span> <span class="float">0</span> <span class="float">9px</span> <span class="color">#333</span>; }
+}</pre></div>
+</div>
+</div>
+<h3>2. And Then Cue It Up</h3>
+<div class='css'><div class="CodeRay">
+<div class="code"><pre><span class="tag">a</span><span class="class">.green</span><span class="class">.button</span> {
+  <span class="key">-webkit-animation-name</span>: <span class="value">greenPulse</span>;
+  <span class="key">-webkit-animation-duration</span>: <span class="float">2s</span>;
+  <span class="key">-webkit-animation-iteration-count</span>: <span class="value">infinite</span>;
+}</pre></div>
+</div>
+</div>
+</div>
+</div>
+ 
+<div class="row">
+<div class="large-12 columns">
+<p><small>Copyright ZURB, freely available for distribution under the MIT license.</small></p>
+</div>
+</div>
+</div>
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+<section class="project-related">
+<div>
+<h2 class="text-center">Check out other Playground experiments</h2>
+<a href="/playground/motion-ui" class="project-related-item">
+<div>
+<img alt="Grid" src="/playground/uploads/project/thumb/82/grid.jpg"/>
+<h3>Motion UI</h3>
+</div>
+</a>
+<a href="/playground/css-flip-book" class="project-related-item">
+<div>
+<img alt="Css flip book thumb" src="/playground/uploads/project/thumb/69/css-flip-book-thumb.png"/>
+<h3>CSS Flip Book</h3>
+</div>
+</a>
+<a href="/playground/image-blur-texture" class="project-related-item">
+<div>
+<img alt="Thumbnail" src="/playground/uploads/project/thumb/66/thumbnail.jpg"/>
+<h3>Image Blur Texture</h3>
+</div>
+</a>
+<a href="/playground/pizza-amore-charts-and-graphs" class="project-related-item">
+<div>
+<img alt="Thumbnail" src="/playground/uploads/project/thumb/65/thumbnail.jpg"/>
+<h3>Pizza Amore!</h3>
+</div>
+</a>
+</div>
+</section>
+<section id="studiosCallout" class="studios">
+<div class="row expanded">
+<div class="large-4 medium-4 columns">
+<img alt="Startup playground" src="/playground/assets/startup-playground-e4d9bb8be8d5e8ea0878fb420213e38d.svg"/>
+</div>
+<div class="large-8 medium-8 columns banner-info">
+<div class="property-label">ZURB STUDIOS</div>
+<h3 class="light">Get started with finishing</h3>
+<p class="lead">Team up with our designers to see how our iterative design process can get your project going. Equipped with our Progressive Design process, visual skills, and the coding chops that brought you Foundation, ZURB Studios is ready to jump in and get your product out to the masses!</p>
+<div class="course-buttons">
+<a href="http://zurb.com/studios/startup" class="button" data-zcom-event="studios_playground_click" id="playgroundStartupV1">Show Me How &rarr;</a>
+</div>
+</div>
+</div>
+</section>
+<div class="zurb-footer-top bg-blue">
+ 
+<div class="row property">
+ 
+<div class="large-4 columns">
+<div class="property-info">
+<h3><a href="/playground/">Studios</a></h3>
+<p>We’re a close-knit team of product designers who help businesses design for people. Since 1998, we’ve helped over 250 teams and startups get stuff done. We’ll work together to get your product or online service designed better and faster than you thought possible.</p>
+</div>
+</div>
+ 
+<div class="large-8 columns">
+<div class="row collapse">
+ 
+<div class="large-4 columns">
+<div class="learn-links">
+<h4>Want more?</h4>
+<ul>
+<li><a href="/studios/our-work">Work</a></li>
+<li><a href="/studios/working-together">Approach</a></li>
+<li><a href="../manifesto?our_work=true">Manifesto</a></li>
+<li><a href="/studios/contact">Contact</a></li>
+</ul>
+</div>
+</div>
+ 
+ 
+<div class="large-4 columns">
+<div class="support-links">
+<h4 class="hide-for-small">Talk to us</h4>
+<p>Call us at <strong>(408) 341-0600</strong></p>
+<p>Not a big talker? Email us at <a href="/contact">getstarted@zurb.com</a></p>
+</div>
+</div>
+ 
+ 
+<div class="large-4 columns">
+<div class="connect-links">
+<h4 class="hide-for-small">Stay in touch</h4>
+<p>Get monthly updates from ZURB in your inbox. Read our <a href="http://zurb.com/news">latest news &amp; buzz.</a></p>
+<a href="http://zurb.com/news" class="small button">Get ZURBnews!</a>
+</div>
+</div>
+ 
+</div>
+</div>
+</div>
+ 
+ 
+<div class="row global">
+<div class="large-3 small-6 columns">
+<a href="http://zurb.com/studios" class="footer-link-block services">
+<span class="title">Studios</span>
+<span>Helping more than 200 startups succeed since 1998.</span>
+</a>
+</div>
+<div class="large-3 small-6 columns">
+<a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+<span class="title">Foundation</span>
+<span>The most advanced front-end framework in the world.</span>
+</a>
+</div>
+<div class="large-3 small-6 columns">
+<a href="http://zurb.com/apps" class="footer-link-block apps">
+<span class="title">Notable</span>
+<span>Prototype, iterate and collect feedback on your products.</span>
+</a>
+</div>
+<div class="large-3 small-6 columns">
+<a href="http://zurb.com/university" class="footer-link-block expo">
+<span class="title">University</span>
+<span>Ideas, thoughts and design resources shared with you.</span>
+</a>
+</div>
+</div>
+ 
+</div>
+ 
+<div class="zurb-footer-bottom">
+<div class="row">
+<div class="large-4 push-8 columns">
+<ul class="home-social">
+<li><a href="http://www.twitter.com/ZURB" class="twitter"></a></li>
+<li><a href="http://www.facebook.com/ZURB" class="facebook"></a></li>
+<li><a href="/contact" class="mail"></a></li>
+</ul>
+</div>
+<div class="large-8 pull-4 columns">
+<a href="http://zurb.com" class="zurb-logo regular"></a>
+<ul class="zurb-links">
+<li><a href="http://zurb.com/about">About</a></li>
+<li><a href="http://zurb.com/blog">Blog</a></li>
+<li><a href="http://zurb.com/news">News<span class="show-for-medium-up"> &amp; Events</span></a></li>
+<li><a href="http://zurb.com/contact">Contact</a></li>
+<li><a href="http://zurb.com/sitemap">Sitemap</a></li>
+</ul>
+<p class="copyright">© 1998–2016 ZURB, Inc. All rights reserved.</p>
+</div>
+</div>
+</div>
+ 
+<div id="loginModal" class="reveal-modal medium" data-reveal>
+<div class="row">
+<div class="large-12 columns">
+<h3>Log in with your ZURB ID</h3>
+</div>
+</div>
+<div class="row">
+<div class="large-7 columns">
+<a href="http://platform.zurb.com/auth/google_oauth2?origin=http%3A%2F%2Fzurb.com%2Fplayground%2Fauth%2Fzurb%2Fcallback%3Forigin%3Dhttp%3A%2F%2Fzurb.com%2Fplayground%2Fradioactive-buttons&amp;application_id=10" class="button expand google-btn">Log in with Google</a>
+<div class="login-separator">
+<span>or</span>
+<hr>
+</div>
+<form accept-charset="UTF-8" action="/playground/auth/zurb/email" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;"/><input name="authenticity_token" type="hidden" value="+QP1zOZz6UdO/uIK3OmUsxP4mSToYv8wbBkDsMUo1iI="/></div>
+<input id="email" name="email" placeholder="Email" type="text"/>
+<input id="password" name="password" placeholder="Password" type="password"/>
+<button type="submit" class="expand email-btn">Log in with Email</button>
+</form> <div class="subform-text">
+<p>Don't have a ZURB ID? <a href="#" data-reveal-id="signupModal">Sign up</a></p>
+<a href="http://platform.zurb.com/reset_password/new?application_id=10" class="forgot">Forgot password?</a>
+</div>
+</div>
+<div class="large-5 columns hide-for-small">
+<div class="account-explained">
+<h4>Your ZURB ID explained</h4>
+<p>You’ll use your ZURB ID to log in to all of ZURB’s properties — University, Products and Foundation. One account to handle it all.</p>
+<div class="parts university">
+<h5>University</h5>
+<p>Product design resources, courses and training.</p>
+</div>
+<div class="parts apps">
+<h5>Design Apps</h5>
+<p>Prototype, iterate and collect feedback on your products.</p>
+</div>
+<div class="parts foundation">
+<h5>Foundation</h5>
+<p>The most advanced front-end framework in the world.</p>
+</div>
+</div>
+</div>
+</div>
+<a class="close-reveal-modal">&#215;</a>
+</div>
+<div id="signupModal" class="reveal-modal medium" data-reveal>
+<div class="row">
+<div class="large-12 columns">
+<h3>Sign up for a ZURB ID</h3>
+</div>
+</div>
+<div class="row">
+<div class="large-7 columns">
+<a href="http://platform.zurb.com/auth/google_oauth2?origin=http%3A%2F%2Fzurb.com%2Fplayground%2Fauth%2Fzurb%2Fcallback%3Forigin%3Dhttp%3A%2F%2Fzurb.com%2Fplayground%2Fradioactive-buttons&amp;application_id=10" class="button expand google-btn">Sign up with Google</a>
+<div class="login-separator">
+<span>or</span>
+<hr>
+</div>
+<form accept-charset="UTF-8" action="/playground/auth/register" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;"/><input name="authenticity_token" type="hidden" value="+QP1zOZz6UdO/uIK3OmUsxP4mSToYv8wbBkDsMUo1iI="/></div>
+<input id="name" name="name" placeholder="Name" type="text"/>
+<input id="email" name="email" placeholder="Email" type="text"/>
+<input id="password" name="password" placeholder="Password" type="password"/>
+<button type="submit" class="expand email-btn">Sign up with Email</button>
+</form> <div class="subform-text">
+<p>Already have a ZURB ID? <a href="#" data-reveal-id="loginModal">Log in</a></p>
+</div>
+</div>
+<div class="large-5 columns hide-for-small">
+<div class="account-explained">
+<h4>Your ZURB ID explained</h4>
+<p>You’ll use your ZURB ID to log in to all of ZURB’s properties — University, Products and Foundation. One account to handle it all.</p>
+<div class="parts university">
+<h5>University</h5>
+<p>Product design resources, courses and training.</p>
+</div>
+<div class="parts apps">
+<h5>Design Apps</h5>
+<p>Prototype, iterate and collect feedback on your products.</p>
+</div>
+<div class="parts foundation">
+<h5>Foundation</h5>
+<p>The most advanced front-end framework in the world.</p>
+</div>
+</div>
+</div>
+</div>
+<a class="close-reveal-modal">&#215;</a>
+</div>
+</section>
+ 
+<section id="sidebar" role="complementary">
+<div class="main-menu show-for-small">
+<h6>Studios</h6>
+<nav id="sideMenu" role="navigation">
+<ul id="sideMainNav" class="nav-bar">
+<li><a href="http://zurb.com/studios/working-together">Approach</a></li>
+<li><a href="http://zurb.com/studios/our-work">Work</a></li>
+<li><a href="http://zurb.com/wired">Wired</a></li>
+<li><a href="http://zurb.com/playground">Playground</a></li>
+<li><a href="http://zurb.com/studios/who-we-are">About</a></li>
+<li><a href="http://zurb.com/studios/cotact">Contact</a></li>
+</ul>
+</nav>
+</div>
+<hr class="show-for-small">
+<div class="more-goodness  show-for-small">
+<h6>More ZURB Goodness</h6>
+<nav role="navigation">
+<ul id="sideMainNav" class="nav-bar goodness">
+<li><a href="https://notableapp.com">Notable</a></li>
+<li><a href="http://zurb.com/manifesto">Manifesto</a></li>
+<li><a href="http://zurb.com/university/courses">Foundation Training</a></li>
+</ul>
+</nav>
+</div>
+<hr class=" show-for-small">
+<br>
+<div class="zurb-links">
+<ul class="top">
+<li class="logo"><a href="http://zurb.com"><img alt="Zurb logo t" src="/playground/assets/zurb-logo-t-bf307dfc96991d6a48d16b08c5b7a79d.png"/></a></li>
+<li><a href="http://zurb.com/about">About</a></li>
+<li><a href="http://zurb.com/blog">Blog</a></li>
+<li><a href="http://zurb.com/contact">Contact</a></li>
+</ul>
+<ul class="pillars">
+<li>
+<a href="http://zurb.com/studios" class="footer-link-block services">
+<span class="title">Studios</span>
+<span>Helping startups win since '98.</span>
+</a>
+</li>
+<li>
+<a href="http://foundation.zurb.com/" class="footer-link-block foundation">
+<span class="title">Foundation</span>
+<span>World's most advanced responsive framework.</span>
+</a>
+</li>
+<li>
+<a href="http://zurb.com/apps" class="footer-link-block apps">
+<span class="title">Notable</span>
+<span>Tools to rapidly prototype and iterate.</span>
+</a>
+</li>
+<li>
+<a href="http://zurb.com/university" class="footer-link-block expo">
+<span class="title">University</span>
+<span>Online training for smarter product design.</span>
+</a>
+</li>
+</ul>
+</div>
+</section>
+ 
+<script src="/playground/assets/application-03ec9dce67a1a5445b7e5091c21fc81c.js"></script>
+<script src="/playground/assets/jquery.offcanvas-dfdfa16f5ba0b8021b5c06352ff48d5b.js"></script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>防汛界面</title>
+	<link href="./CSS/bootstrap.min.css" rel="stylesheet">
+	<link href="./CSS/index.css" rel="stylesheet">
+	<link rel="stylesheet" href="./CSS/leaflet.css">
+	<script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.simpleWeather.min.js"></script>
+    <script src="./js/plugins/JQuery_Form/jquery.form.js"></script>
+    <script src="./js/leaflet.js"></script>
+</head>
+<body>
+	<nav class="navbar navbar-default navbar-fixed-top navbar-inverse">
+		<div class="container">
+			
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="#">西城防汛宣传</a>
+			</div>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1"><!--导航菜单-->
+				<form class="navbar-form navbar-right" role="login"><!--搜索框和搜索按钮-->
+					<button type="button" class="btn btn-default btn-block" data-toggle="modal" data-target="#exampleModal">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+					</button>
+				</form>
+				<ul class="nav navbar-nav navbar-right">
+					<li class="active"><a class="J_menuItem" href="Home.html">主页 <span class="sr-only">(current)</span></a></li><!--定义活动菜单-->
+					<li class=""><a class="J_menuItem" href="./info/info.html">防汛信息 <span class="sr-only">(current)</span></a></li>
+					<li class=""><a class="J_menuItem" href="./News/newslist.html">新闻公告<span class="sr-only">(current)</span></a></li>
+					<li class=""><a class="J_menuItem" href="./activity/propaganda.html">宣传活动<span class="sr-only">(current)</span></a></li>
+					<li id="ManageItem1" class=""><a class="J_menuItem" href="./Manager/News_manager1.html">上传通知<span class="sr-only">(current)</span></a></li>
+					<!--li class=""><a href="#">通知公告 <span class="sr-only">(current)</span></a></li-->
+					<li id="ManageItem" class="dropdown"><!--下拉菜单-->
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">后台管理 <span class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a class="J_menuItem" href="./Manager/carousel_manager.html">轮播管理</a></li>
+							<li><a class="J_menuItem" href="./Manager/News_manager.html">新闻管理</a></li>
+							<li><a class="J_menuItem" href="./Manager/Video_Manager.html">视频管理</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+	
+	<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+					<h4 class="modal-title" id="exampleModalLabel">登录界面</h4>
+				</div>
+				<div class="modal-body">
+					<form id="LoginForm" class="form-signin" method="POST">
+						<label for="inputUsername" class="sr-only">用户名</label>
+						<input name="UserName" type="text" id="inputUsername" class="form-control" placeholder="用户名" required autofocus>
+						<br/>
+						<label for="inputPassword" class="sr-only">密码</label>
+						<input name="Password" type="password" id="inputPassword" class="form-control" placeholder="密码" required>
+						<div class="checkbox">
+							<label>
+								<input type="checkbox" value="remember-me"> 记住我
+							</label>
+						</div>
+						<button class="btn btn-lg btn-primary btn-block" type="submit">登录</button>
+						<div id="infodiv" class="alert hide" role="alert" style="margin-top:20px;"></div>
+					</form>
+				</div>
+
+			</div>
+		</div>
+	</div>
+	<!--div class="container mainpage"-->
+	<iframe src="Home.html" id="J_iframe" width="100%" height="100%" src="" frameborder="0" data-id="" seamless></iframe>
+	
+   
+      <script type="text/javascript">
+      	$(function(){
+      		J_iframe
+      		$(".J_menuItem").on('click',function(){
+      			var thisitem = $(this);
+      			var url = thisitem.attr('href');
+      			var allitem = $(".J_menuItem");
+      			if($(".active")[0].className == "dropdown active") $(".active")[0].className = "dropdown";
+      			else $(".active")[0].className = "";
+      			
+      			if(thisitem[0].parentElement.parentElement.className == "dropdown-menu"){
+      				thisitem[0].parentElement.parentElement.parentElement.className = "dropdown active";
+      			}
+      			else{
+      				thisitem[0].parentElement.className = "active";
+      			}
+      			
+      			$("#J_iframe").attr('src',url);
+      			return false;
+      		});
+      		
+      		$("#ManageItem").hide();
+      		$("#ManageItem1").hide();
+      		
+      		$("#LoginForm").ajaxForm({
+    			url:"./Login.do",
+    			dataType:"json",
+    			success:function(data){
+    				//console.log(data);
+    				$("#ManageItem").hide();
+      				$("#ManageItem1").hide();
+      		
+    				if(data.success){
+    					var authority = data.authority.replace(/\s/g,"");
+    					
+    					//当拥有管理权限时
+    					if(authority == "1"){
+    						$("#ManageItem").show();
+    						$("#infodiv").attr("class", "alert alert-success");
+    						$("#infodiv").html("登陆成功");
+    						setTimeout(function(){
+    							$("#infodiv").html("");
+    							$("#infodiv").attr("class", "alert hide");
+    							$("#exampleModal").modal('hide');
+    						},2000)
+    					}
+    					
+    					//街道办登录权限
+    					else if(authority == "2"){
+    						$("#ManageItem1").show();
+    						$("#infodiv").attr("class", "alert alert-success");
+    						$("#infodiv").html("登陆成功");
+    						setTimeout(function(){
+    							$("#infodiv").html("");
+    							$("#infodiv").attr("class", "alert hide");
+    							$("#exampleModal").modal('hide');
+    						},2000)
+    					}
+    				}
+    				else{
+    					//$("#ManageItem").show();
+						$("#infodiv").attr("class", "alert alert-danger");
+						$("#infodiv").html("<strong>登录失败！</strong>"+data.message);
+						setTimeout(function(){
+							$("#infodiv").html("");
+							$("#infodiv").attr("class", "alert hide");
+							
+						},2000)
+    					//swal("修改失败", data.message, "error");alert-danger
+    				}
+    			},
+    			error:function(e,m,a){
+    				//$("#ManageItem").show();
+					$("#infodiv").attr("class", "alert alert-danger");
+					$("#infodiv").html("<strong>登录失败！</strong>连接数据库失败");
+					setTimeout(function(){
+						$("#infodiv").html("");
+						$("#infodiv").attr("class", "alert hide");
+						
+					},2000)
+    				//swal("无法确定是否成功", "可能无法连接服务器，或者是服务器未返回指定数据格式，请刷新检查是否修改成功。", "warning");
+    			}
+    		});
+      		
+      	});
+      </script>
+  </body>
+  </html>

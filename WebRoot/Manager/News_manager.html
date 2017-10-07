@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>防汛宣传 — 新闻管理</title>
+	<meta name="keywords" content="">
+    <meta name="description" content="">
+
+
+	<link href="../CSS/bootstrap.min.css" rel="stylesheet">
+	<link href="../CSS/animate.css" rel="stylesheet">
+    <link href="../CSS/plugins/summernote/summernote.css" rel="stylesheet">
+    <link href="../CSS/plugins/summernote/summernote-bs3.css" rel="stylesheet">
+	<link href="../CSS/font-awesome.css?v=4.4.0" rel="stylesheet">
+    <link href="../CSS/style.css?v=4.1.0" rel="stylesheet">
+	<link href="../CSS/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="../CSS/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="../CSS/News_manager.css" rel="stylesheet">
+
+</head>
+<body>
+	<div id="onloading-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="top:100px">
+        <div class="modal-dialog" role="document">
+            <div id="resultInfo" class="modal-content" style="text-align: center;background-color: rgba(255, 255, 255, 0);box-shadow: 0 0px 0px rgba(0, 0, 0, 0.3);">
+    
+            </div>
+        </div>
+    </div>
+	<div class="wrapper wrapper-content">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="ibox float-e-margins">
+
+                    <div class="ibox-title">
+                        <h5>发布新闻</h5>   
+                    </div>
+                    <div class="ibox-content">
+                        <form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">新闻标题：</label>
+                                <div class="col-sm-9">
+                                    <input id="News_title" type="text" class="form-control" value="" required aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">新闻作者：</label>
+                                <div class="col-sm-4">
+                                    <input id="News_author" type="text" class="form-control" value="">
+                                </div>
+                                <label class="col-sm-2 control-label">发布时间：</label>
+                                <div class="col-sm-3">
+                                    <input id="News_time" type="text" class="laydate-icon form-control layer-date" value="" placeholder="YYYY-MM-DD hh:mm:ss" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" onmouseup="laydateresize(this)">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="ibox-content" id="News_Edit">
+
+                        <div class="click2edit wrapper">
+                            <br>
+                            <p>在这里添加新闻内容。</p>
+                        	<br>
+                        </div>
+
+                    </div>
+                    <div class="ibox-content">
+                    	<button id="edit" class="btn btn-primary btn-xs m-l-sm" onclick="edit()" type="button">编辑</button>
+                        <button id="save" class="btn btn-primary  btn-xs" onclick="save()" type="button">保存</button>
+                        <button id="upload" class="btn btn-primary  btn-xs" type="button" disabled onclick="uploading()">提交</button>
+                        <button id="Isupdate" class="btn btn-primary  btn-xs" type="button" disabled style="display:none;" onclick="Isupdate()">确认修改</button>
+                        <button id="Noupdate" class="btn btn-primary  btn-xs" type="button" style="display:none;" onclick="cancelupdate()">取消修改</button>
+                    </div>
+
+                </div>
+                <div class="ibox">
+
+                    <div class="ibox-title">
+                        <h5>已有新闻列表</h5>   
+                    </div>
+                    <div class="ibox-content">
+                    	<table id="exampleTablePagination"> </table>
+                    	<div class="ibox-content">
+                    	<button id="delete" class="btn btn-primary btn-xs m-l-sm" onclick="newsdelete()" type="button" disabled>删除</button>
+                        <button id="update" class="btn btn-primary  btn-xs" onclick="update()" type="button" disabled>修改编辑</button>
+                    	</div>
+                    </div>
+               	</div>
+            </div>
+        </div>
+    </div>
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	<script src="../js/plugins/summernote/summernote.js"></script>
+    <script src="../js/plugins/summernote/summernote-zh-CN.js"></script>
+    <script src="../js/plugins/layer/laydate/laydate.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="../js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../js/content.js"></script>  
+
+    <script src="../js/Page/News_manager/News_manger.js" charset="utf-8"></script>
+
+	<script>
+	  /*   
+     * 功    能：月、日、时、分、秒若为个位数，则在它前面补位0
+	 * 函    数：字符串补位函数FullString
+	 * 参    数：str
+	 * 作    者：
+	 * 修改日期：2017-09-06
+	*/
+	function FullString(str){
+		if(str.length<2){
+			for(var i=0;i<(2-str.length);i++){
+				str = "0"+str;
+			}
+		}
+	
+		return str;
+	}
+
+	$(document).ready(function(){
+	
+	/* 功    能：用补位函数执行月、日、时、分、秒的变量，并付给日期显示框的变量d
+	 * 作    者：
+	 * 修改日期：2017-09-06
+	*/
+	/* Start */
+	var date = new Date();
+	var mouths = FullString((date.getMonth()+1).toString()),
+	days = FullString(date.getDate().toString()),
+	hours = FullString(date.getHours().toString()),
+	minutes = FullString(date.getMinutes().toString()),
+	seconds = FullString(date.getSeconds().toString()); 
+	
+	
+	var d = date.getFullYear()+"-"+mouths+"-"+days+" "+hours+":"+minutes+":"+seconds;
+	$("#News_time")[0].value = d;
+	
+	
+	/* End */
+	});
+	
+
+	</script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<script src = "js/jquery.min.js"></script>
+</head>
+<body>
+	<script>
+		$.ajax({
+            url:"download.html",
+            dataType:"text",
+            success:function(data){
+                console.log(data);
+            },
+            error:function(e,p){
+            	console.log(e);
+            }
+        });
+	</script>
+</body>
+</html>

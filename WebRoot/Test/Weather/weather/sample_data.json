@@ -1,0 +1,91 @@
+{
+	"title": "Conditions for Austin, TX, US at 03:00 AM CDT", 
+	"temp": "66", 
+	"code": "31", 
+	"todayCode": "32", 
+	"currently": "Clear",
+	"alt":
+	{
+		"high":29,
+		"low":18,
+		"temp":19,
+		"unit":"c"
+	},
+	"city":"Austin",
+	"code":"31",
+	"country":"United States",
+	"currently":"Clear",
+	"description":"<![CDATA[<img src='http://l.yimg.com/a/i/us/we/52/31.gif'/>↵<BR />↵<b>Current Conditions:</b>↵<BR />Clear↵<BR />↵<BR />↵<b>Forecast:</b>↵<BR /> Wed - Sunny. High: 85Low: 64↵<BR /> Thu - Sunny. High: 81Low: 64↵<BR /> Fri - Mostly Sunny. High: 79Low: 58↵<BR /> Sat - Partly Cloudy. High: 82Low: 58↵<BR /> Sun - Sunny. High: 84Low: 59↵<BR />↵<BR />↵<a href='http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2357536/''>Full Forecast at Yahoo! Weather</a>↵<BR />↵<BR />↵(provided by <a href='http://www.weather.com' >The Weather Channel</a>)↵<BR />↵]]>",
+	"forecast":{
+		"0":{
+			"alt":
+			{
+				"high":29,
+				"low":18
+			},
+			"code":"32",
+			"date":"28 Sep 2016",
+			"day":"Wed",
+			"high":"85",
+			"image":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/32d.png",
+			"low":"64",
+			"text":"Sunny",
+			"thumbnail":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/32ds.png"
+		},
+
+		"1":{
+			"alt":
+			{
+				"high":27,
+				"low":18
+			},
+			"code":"32",
+			"date":"29 Sep 2016",
+			"day":"Thu",
+			"high":"81",
+			"image":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/32d.png",
+			"low":"64",
+			"text":"Sunny",
+			"thumbnail":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/32ds.png"
+		},
+		"2":{"......"},
+		"3":{"......"},
+		"4":{"......"},
+		"5":{"......"},
+		"6":{"......"},
+		"7":{"......"},
+		"8":{"......"},
+		"9":{"......"},
+		"length":10
+	},
+	"heatindex":"66",
+	"high":"85",
+	"humidity":"91",
+	"image":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/31d.png",
+	"link":"http://us.rd.yahoo.com/dailynews/rss/weather/Country__Country/*https://weather.yahoo.com/country/state/city-2357536/",
+	"low":"64",
+	"pressure":"994.0",
+	"region":" TX",
+	"rising":"0",
+	"sunrise":"7:23 am",
+	"sunset":"7:19 pm",
+	"temp":"66",
+	"text":"Sunny",
+	"thumbnail":"https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/31ds.png",
+	"title":"Conditions for Austin, TX, US at 03:00 AM CDT",
+	"todayCode":"32",
+	"units":
+	{
+		"distance":"mi",
+		"pressure":"in",
+		"speed":"mph",
+		"temp":"F"
+	},
+	"updated":"Wed, 28 Sep 2016 03:00 AM CDT",
+	"visibility":"15.3",
+	"wind":{
+		"chill":"66",
+		"direction":"NW",
+		"speed":"7"
+	}
+}

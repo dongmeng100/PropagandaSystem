@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <title>视频上传管理</title>
+	<meta charset="utf-8">
+    <meta name="keywords" content="Video,Upload,Manager">
+    <meta name="description" content="上传宣传视频">
+    <meta name="content-type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+    
+    <!--<link rel="stylesheet" type="text/css" href="./styles.css">-->
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet">
+	<link href="../CSS/animate.css" rel="stylesheet">
+	<link href="../CSS/style.css?v=4.1.0" rel="stylesheet">
+	<link href="../CSS/font-awesome.css?v=4.4.0" rel="stylesheet">
+	<link href="../CSS/plugins/fileinput/fileinput.css" rel="stylesheet">
+  </head>
+  
+  <body style="width:80%;margin:auto;background-color: rgba(255, 255, 255, 0);">
+  	<div class="wrapper wrapper-content">
+        <div class="row">
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>上传视频</h5>   
+                    </div>
+                    <div class="ibox-content">
+                    	<form class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">视频标题：</label>
+                                <div class="col-sm-9">
+                                    <input id="Video_title" type="text" class="form-control" value="" required aria-required="true">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">视频来源：</label>
+                                <div class="col-sm-4">
+                                    <input id="Video_author" type="text" class="form-control" value="">
+                                </div>
+                                <label class="col-sm-2 control-label">发布时间：</label>
+                               <div class="col-sm-3">
+                                    <input id="Video_time" type="text" class="laydate-icon form-control layer-date" value="" placeholder="YYYY-MM-DD hh:mm:ss" onclick="laydate({istime: true, format: 'YYYY-MM-DD hh:mm:ss'})" onmouseup="laydateresize(this)">
+                                </div> 
+                                
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">选择文件：</label>
+                                <div class="col-sm-9">
+                                    <input id="videoinput" type="file" name="videofile"　class="file-loading">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="ibox float-e-margins">
+                    <div class="ibox-title">
+                        <h5>视频列表</h5>   
+                    </div>
+                    <div class="ibox-content">
+                    	<form class="form-horizontal">
+                            
+                            <div class="form-group">
+                                <div class="col-sm-12">
+                                    <input id="videooutput" type="file" name="videofile"　class="file-loading">
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+        </div>
+    </div>
+	
+	<!-- 引入库文件 -->
+	<script src="../js/jquery.min.js"></script>
+	<script src="../js/plugins/fileinput/purify.min.js"></script>
+	<script src="../js/plugins/fileinput/fileinput.js"></script>
+	<script src="../js/bootstrap.min.js"></script>
+	
+	<script src="../js/plugins/fileinput/zh.js"></script>
+	<script src="../js/plugins/layer/laydate/laydate.js"></script>
+	<script src="../js/content.js"></script>
+	
+	<script>
+		var getvideo = function(){
+			$('#videooutput').fileinput('destroy');
+			$.ajax({
+				url:"../VideoPreview.do",
+				dataType:"json",
+				success:function(result){
+					Initialvideo(result.initialPreview,result.initialPreviewConfig);
+					$(".kv-file-content").find("video").removeAttr("controls");
+					
+				},
+				error:function(e,a,b){
+					console.log(e);
+				}
+			});
+		};
+		
+	
+		    /*   
+		     * 功    能：月、日、时、分、秒若为个位数，则在它前面补位0
+			 * 函    数：字符串补位函数FullString
+			 * 参    数：str
+			 * 作    者：
+			 * 修改日期：2017-09-06
+			*/
+		function FullString(str){
+			if(str.length<2){
+				for(var i=0;i<(2-str.length);i++){
+					str = "0"+str;
+				}
+			}
+			
+			return str;
+		}
+		
+		$(document).ready(function(){
+			
+			/* 功    能：用补位函数执行月、日、时、分、秒的变量，并付给日期显示框的变量d
+			 * 作    者：
+			 * 修改日期：2017-09-06
+			*/
+			/* Start */
+			var date = new Date();
+			var mouths = FullString((date.getMonth()+1).toString()),
+			days = FullString(date.getDate().toString()),
+			hours = FullString(date.getHours().toString()),
+			minutes = FullString(date.getMinutes().toString()),
+			seconds = FullString(date.getSeconds().toString()); 
+	   
+			
+			var d = date.getFullYear()+"-"+mouths+"-"+days+" "+hours+":"+minutes+":"+seconds;
+			$("#Video_time")[0].value = d;
+		
+			/* End */
+			
+			
+			$("#videoinput").fileinput({
+				uploadUrl:'../VideoUpload.do',
+				uploadExtraData:function(){
+					var out = {};
+					out.title = document.getElementById("Video_title").value,
+					out.author = document.getElementById("Video_author").value,
+					out.time = document.getElementById("Video_time").value;
+					return out;
+				},
+				uploadAsync: true, 
+				language:'zh',
+				minFileCount: 1, 
+				maxFileCount: 1,
+				maxFileSize: 10000000,
+				//allowedFileTypes:['video'],
+				allowedFileExtensions:['mp4','mkv','ogg','webm'],
+				//allowedPreviewTypes:['video','flash'],
+				initialPreviewShowDelete:false,
+				maxFilePreviewSize: 307200,
+				fileTypeSettings:{
+				    image: function(vType, vName) {
+				        return (typeof vType !== "undefined") ? vType.match('image.*') : vName.match(/\.(gif|png|jpe?g)$/i);
+				    },
+				    html: function(vType, vName) {
+				        return (typeof vType !== "undefined") ? vType == 'text/html' : vName.match(/\.(htm|html)$/i);
+				    },
+				    text: function(vType, vName) {
+				        return typeof vType !== "undefined" && vType.match('text.*') || vName.match(/\.(txt|md|csv|nfo|php|ini)$/i);
+				    },
+				    video: function (vType, vName) {
+				        return typeof vType !== "undefined" && vType.match(/\.video\/(ogg|mp4|webm|mkv|mov|avi|flv|3gp|mpg|wmv|rmvb|rm)$/i) || vName.match(/\.(og?|mp4|webm|mkv|mov|avi|flv|3gp|mpg|wmv|rmvb|rm)$/i);
+				    },
+				    audio: function (vType, vName) {
+				        return typeof vType !== "undefined" && vType.match(/\.audio\/(mp3|wav)$/i) || vName.match(/\.(mp3|wav)$/i);
+				    },
+				    flash: function (vType, vName) {
+				        return typeof vType !== "undefined" && vType == 'application/x-shockwave-flash' || vName.match(/\.(swf)$/i);
+				    },
+				    object: function (vType, vName) {
+				        return true;
+				    },
+				    other: function (vType, vName) {
+				        return true;
+				    }
+				},
+				 fileActionSettings: {
+	                    showRemove: false,
+	                    showUpload: false,
+	                    showZoom: true,
+	                    showDrag: false
+				 }
+				
+			}).on('filepreupload', function(event, data, previewId, index){
+				console.log(data);
+			}).on('fileuploaded', function(event, data, previewId, index) {
+			    getvideo();
+			});
+			$.ajax({
+				url:"../VideoPreview.do",
+				dataType:"json",
+				success:function(result){
+					Initialvideo(result.initialPreview,result.initialPreviewConfig);
+					$(".kv-file-content").find("video").removeAttr("controls");
+					
+				},
+				error:function(e,a,b){
+					console.log(e);
+				}
+			});
+			
+		});
+		
+		
+		function laydateresize(mytargets){
+            setTimeout(function(){
+                var mytarget = mytargets;
+                $("#laydate_box").css("width",mytarget.offsetWidth>240?mytarget.offsetWidth:240);
+                $("#laydate_table").css("width",mytarget.offsetWidth>240?mytarget.offsetWidth:240);
+            },10) 
+        }
+		function Initialvideo(initialPreview,initialPreviewConfig){
+			$("#videooutput").fileinput({ 
+				language:'zh',
+				showCaption:false,
+				showRemove:false,
+				showUpload:false,
+				showCancel:false,
+				showClose:false,
+				showBrowse:false,
+				overwriteInitial: false,
+				maxFilePreviewSize: 307200,
+				initialPreviewShowDelete:true,
+				initialPreview:initialPreview,
+				initialPreviewAsData: true, // 确定你是否仅发送预览数据，而不是原始标记
+			    initialPreviewFileType: 'video',
+			    initialPreviewConfig: initialPreviewConfig,
+			    purifyHtml: true,
+			    fileActionSettings:{
+			    	showDrag:false
+			    },
+			    ajaxDeleteSettings:{
+			    	//dataType:"json",
+			    	/* success:function(data){
+			    		console.log(data);
+			    	}, */
+			    	error:function(e,m,a){
+			    		console.log(e);
+			    	}
+			    }
+				
+			}).on('filezoomshow', function(event, params) {
+				params.modal.find("video").attr("controls","controls");
+			}).on('filezoomprev', function(event, params) {
+				params.modal.find("video").attr("controls","controls");
+			}).on('filezoomnext', function(event, params) {
+				params.modal.find("video").attr("controls","controls");
+			}).on('filesuccessremove', function(event, id) {
+			    var s = event;
+			    console.log(event);
+			    console.log(id);
+			 });
+		}
+	</script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<publishData>
+  <publishProfile publishUrl="http://localhost/juheWeather" deleteExistingFiles="False" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="juheWeather" publishMethod="FileSystem" replaceMatchingFiles="True" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
+    <file relUrl="bin/juheWeather.pdb" publishTime="02/06/2015 10:43:42" />
+    <file relUrl="Service1.asmx" publishTime="08/11/2014 22:02:09" />
+    <file relUrl="bin/juheWeather.dll" publishTime="02/06/2015 10:43:42" />
+    <file relUrl="BJair.aspx" publishTime="08/24/2014 23:59:58" />
+    <file relUrl="BJweather.aspx" publishTime="08/23/2014 10:48:27" />
+    <file relUrl="Web.config" publishTime="02/06/2015 10:43:43" />
+    <file relUrl="bjWeather.asmx" publishTime="08/23/2014 10:10:00" />
+    <file relUrl="ChinaWeather.aspx" publishTime="08/24/2014 09:36:41" />
+  </publishProfile>
+</publishData>

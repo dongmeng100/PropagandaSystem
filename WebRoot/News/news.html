@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>防汛界面</title>
+    <link href="../CSS/bootstrap.min.css" rel="stylesheet">
+    <link href="../CSS/font-awesome.css" rel="stylesheet">
+    <link href="../CSS/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+    <link href="../CSS/animate.css" rel="stylesheet">
+    <link href="../CSS/style.css" rel="stylesheet">
+    <link href="../CSS/news.css" rel="stylesheet">
+</head>
+<body class="gray-bg">
+    <div class="wrapper wrapper-content  animated fadeInRight article">  
+        <div class="row">
+            <div class="col-lg-10 col-lg-offset-1">
+                <div class="ibox">
+                    <div class="ibox-content">
+                        
+                        <div class="text-center article-title">
+                            <h2 id="title" title="新闻标题" style="margin-bottom: 24px;">
+                   				新闻标题
+                            </h2>
+                            <div class="pull-right" style="padding-right: 10%;">
+                            <button id="author" class="btn btn-info" type="label">作者</button>
+                            <button id="time" class="btn btn-info" type="label">发布时间</button>
+                        </div>
+                        </div>
+                        <div id="paper" style="overflow-x: scroll;">
+
+                        </div>
+                        <hr>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+ <script src="../js/jquery.min.js"></script>
+ <script src="../js/bootstrap.min.js"></script>
+ <script src="../js/content.js"></script>
+
+ <script>
+ 	function GetRequest() {
+	    var url = location.search; //获取url中"?"符后的字串
+	    var theRequest = new Object();
+	    if (url.indexOf("?") != -1) {
+	        var str = url.substr(1);
+	        strs = str.split("&");
+	        for(var i = 0; i < strs.length; i ++) {
+	            theRequest[strs[i].split("=")[0]] = unescape(strs[i].split("=")[1]);
+	        }
+	    }
+	    return theRequest;
+	}
+	var Request = new Object();
+	Request = GetRequest();
+	var s = Request.id;
+    $.ajax({
+        url:"../SingleNews.do",
+        data:{ID:s},
+        dataType:"text",
+        success:function(result){
+        	$("#title").html(result.substring(result.indexOf("\",\"title\":\"")+11,result.indexOf("\"}")));
+        	$("#time").html(result.substring(result.indexOf("\",\"time\":\"")+10,result.indexOf("\",\"title\":\"")).split(".")[0]);
+        	$("#author").html(result.substring(result.indexOf("\"author\":")+10,result.indexOf("\",\"content\":\"")));
+        	$("#paper").html(result.substring(result.indexOf("\",\"content\":\"")+13,result.indexOf("\",\"iD\":\"")).replace(/\\"/g,"\"").replace(/\\n/g,""));
+        },
+        error:function(e,q){
+        	console.log(e.responseText);
+        }
+    });
+
+</script>
+</body>
+</html>

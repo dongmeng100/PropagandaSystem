@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Plyr - A simple HTML5 media player</title>
+        <meta name="description" content="A simple HTML5 media player with custom controls and WebVTT captions.">
+        <meta name="author" content="Sam Potts">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <!-- Styles -->
+        <link rel="stylesheet" href="../CSS/plyr.css">
+
+        <!-- Docs styles -->
+        <link rel="stylesheet" href="../CSS/demo.css">
+    </head>
+    <body>
+        <header>
+            <h1>西城防汛宣传</h1>
+            <p>活动视频播放</p>
+            
+        </header>
+
+        <main role="main" id="main">
+            <section>
+                <video id="player">
+                    <!-- <source src="../video/活着.mp4" type="video/mp4"> -->
+                </video>
+
+            </section>
+        </main>
+
+        <!-- Plyr core script -->
+        <script src="../js/plugins/plyr/plyr.js"></script>
+        <SCRIPT type="text/javascript">
+        var controls = ["<div class='plyr__controls'>",
+                        "<button type='button' data-plyr='restart'>",
+                            "<svg><use xlink:href='#plyr-restart'></use></svg>",
+                            "<span class='plyr__sr-only'>Restart</span>",
+                        "</button>",
+                        "<button type='button' data-plyr='rewind'>",
+                            "<svg><use xlink:href='#plyr-rewind'></use></svg>",
+                            "<span class='plyr__sr-only'>Rewind {seektime} secs</span>",
+                        "</button>",
+                        "<button type='button' data-plyr='play'>",
+                            "<svg><use xlink:href='#plyr-play'></use></svg>",
+                            "<span class='plyr__sr-only'>Play</span>",
+                        "</button>",
+                        "<button type='button' data-plyr='pause'>",
+                            "<svg><use xlink:href='#plyr-pause'></use></svg>",
+                            "<span class='plyr__sr-only'>Pause</span>",
+                        "</button>",
+                        "<button type='button' data-plyr='fast-forward'>",
+                            "<svg><use xlink:href='#plyr-fast-forward'></use></svg>",
+                            "<span class='plyr__sr-only'>Forward {seektime} secs</span>",
+                        "</button>",
+                        "<span class='plyr__progress'>",
+                            "<label for='seek{id}' class='plyr__sr-only'>Seek</label>",
+                            "<input id='seek{id}' class='plyr__progress--seek' type='range' min='0' max='100' step='0.1' value='0' data-plyr='seek'>",
+                            "<progress class='plyr__progress--played' max='100' value='0' role='presentation'></progress>",
+                            "<progress class='plyr__progress--buffer' max='100' value='0'>",
+                                "<span>0</span>% buffered",
+                            "</progress>",
+                            "<span class='plyr__tooltip'>00:00</span>",
+                        "</span>",
+                        "<span class='plyr__time'>",
+                            "<span class='plyr__sr-only'>Current time</span>",
+                            "<span class='plyr__time--current'>00:00</span>",
+                        "</span>",
+                        "<span class='plyr__time'>",
+                            "<span class='plyr__sr-only'>Duration</span>",
+                            "<span class='plyr__time--duration'>00:00</span>",
+                        "</span>",
+                        "<button type='button' data-plyr='mute'>",
+                            "<svg class='icon--muted'><use xlink:href='#plyr-muted'></use></svg>",
+                            "<svg><use xlink:href='#plyr-volume'></use></svg>",
+                            "<span class='plyr__sr-only'>Toggle Mute</span>",
+                        "</button>",
+                        "<span class='plyr__volume'>",
+                            "<label for='volume{id}' class='plyr__sr-only'>Volume</label>",
+                            "<input id='volume{id}' class='plyr__volume--input' type='range' min='0' max='10' value='5' data-plyr='volume'>",
+                            "<progress class='plyr__volume--display' max='10' value='0' role='presentation'></progress>",
+                        "</span>",
+                        "<button type='button' data-plyr='fullscreen'>",
+                            "<svg class='icon--exit-fullscreen'><use xlink:href='#plyr-exit-fullscreen'></use></svg>",
+                            "<svg><use xlink:href='#plyr-enter-fullscreen'></use></svg>",
+                            "<span class='plyr__sr-only'>Toggle Fullscreen</span>",
+                        "</button>",
+                    "</div>"].join("");
+        	var players = plyr.setup('#player',{
+        		controls:['play-large', 'restart','rewind','play','pause','fast-forward', 'progress', 'current-time', 'mute', 'volume', 'fullscreen'],
+        		i18n: {
+        		    restart:            "Restart",
+        		    rewind:             "Rewind {seektime} secs",
+        		    play:               "Play",
+        		    pause:              "Pause",
+        		    forward:            "Forward {seektime} secs",
+        		    buffered:           "buffered",
+        		    currentTime:        "Current time",
+        		    duration:           "Duration",
+        		    volume:             "Volume",
+        		    toggleMute:         "Toggle Mute",
+        		    toggleCaptions:     "Toggle Captions",
+        		    toggleFullscreen:   "Toggle Fullscreen"
+        		},
+        		html:controls
+        	});
+        	players[0].source({
+        	  	type:       'video',
+        	  	title:      'Example title',
+        	  	sources: [{
+    	      		src:    '../video/活着.mp4',
+    	      		type:   'video/mp4'
+    	  	},{
+        	      		src:    '../video/View_From_A_Blue_Moon_Trailer-HD.mp4',
+        	      		type:   'video/mp4'
+        	  	},{
+    	      		src:    '../video/1.mkv',
+    	      		type:   'video/mp4'
+    	  	}]
+        	  	//poster:     '/path/to/poster.jpg',
+
+        	});
+        </SCRIPT>
+    </body>
+</html>

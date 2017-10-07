@@ -1,0 +1,105 @@
+@font-face {
+   font-family: 'weather';
+   src: url('../Image/icon/artill_clean_icons-webfont.eot');
+   src: url('../Image/icon/artill_clean_icons-webfont.eot?#iefix') format('embedded-opentype'),
+   url('../Image/icon/artill_clean_icons-webfont.woff') format('woff'),
+   url('../Image/icon/artill_clean_icons-webfont.ttf') format('truetype'),
+   url('../Image/icon/artill_clean_icons-webfont.svg#artill_clean_weather_iconsRg') format('svg');
+   font-weight: normal;
+   font-style: normal;
+}
+html{
+  margin:auto auto;
+  width: 80%;
+  height: 100%; 
+  min-width: 1058px;
+  min-height: 669px; 
+  -webkit-text-size-adjust: none;
+}
+body{
+    width: 100%;
+    margin: auto auto;
+    height: 100%;
+    min-width: 1058px;
+    -webkit-text-size-adjust: none;
+    background-color: rgba(0,0,0,0);
+    background-size: cover;
+}
+.h3, h3 {
+    font-size: 20px;
+}
+.mainpage{
+    height: 100%;
+}
+
+.navbar-inverse {
+    background-color: #006699;
+    border-color: #006699;
+}
+
+.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover {
+    color: #fff;
+    background-color: #579bbd;
+}
+.ibox-title{
+        height:0;
+       }
+        
+         /*.example{
+           margin-left:130px;
+         }*/
+         .ibox-content .h4{
+            width:100%;
+            margin:0 auto;
+         }
+          .example1{
+            width:100%;
+            margin:0 auto;
+          }
+         .example-wrap .h4{
+            width: 1026px;
+            height: 30px;
+            background-color: #FEEBB1;
+            margin:0 auto;
+            font:16px/30px 微软雅黑;
+         }
+
+         .example1 #exampleTablePagination{
+            border:0px solid white;
+            table-layout: fixed;/*解决文字溢出问题*/
+           
+          }
+          .example1 #exampleTablePagination td{
+            overflow: hidden;/*解决文字溢出问题*/
+            white-space: nowrap;/*解决文字溢出问题*/
+            text-overflow: ellipsis;/*解决文字溢出问题*/
+
+          }
+         .example1 #exampleTablePagination tr{
+            margin-left: 3px;
+            border-left: none;
+            border-bottom:0px dotted #bbb;
+            
+         }
+         #exampleTablePagination tr span{
+            color:red;
+            margin-right: 5px;
+            font:700 24px/24px 宋体;
+         }
+         #exampleTablePagination tr #tr-right{
+            color:red;
+         }
+         #exampleTablePagination tr a{
+            font:15px 微软雅黑;
+         }
+          #exampleTablePagination tr td .zuobian{
+            color:blue;
+          }
+          .fixed-table-container {
+    position: relative;
+    clear: both;
+    border: 0px solid #e4eaec;
+}
+
+
+

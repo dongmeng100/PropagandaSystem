@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>防汛界面</title>
+	
+	<link href="../CSS/bootstrap.min.css" rel="stylesheet">
+	<link href="../CSS/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+    <link href="../CSS/carousel_manager.css" rel="stylesheet">
+    <style type="text/css">
+    .lunboguanli
+    {
+        margin-top: 3px;
+    }
+    .header
+    {
+        font-size:20px;
+        margin:auto auto;
+        margin-top: 0px;
+        margin-bottom: 5px;
+        padding: 3px 0;
+    }
+    </style>
+</head>
+<body>
+	
+	<!--添加代码-->	
+		
+		<div class="container-fluids col-sm-12">
+		<p class="bg-primary header" style="height: 40px">轮播内容管理</p>
+			<!-- <div class="row"> -->
+				<!-- <div class="col-sm-6 col-md-4"> -->
+					<div class="thumbnail" style="height: 400px; width: 100%">
+					<div class="media" style="height: 100%;width: 100%">
+						<div class="media-left" style="width: 56%">
+							<img id="img1" alt="100%x200" src="../Image/1_1.jpg" data-holder-rendered="true" style="width: 100%; display: block;">
+						</div>						
+						<div class="media-right" style="width: 44%">
+						<form id="form1" method="post">
+						    <br/>
+							标题：<input type="text" name="title" size="49" value=""><br/><br/>
+							内容：(200字以内)<br/><textarea name="content" rows="9" cols="57"></textarea><br/>
+							<p style="padding-top: 10px">
+							<input title="img1" type="file" name="image" onchange="fileclick(this)" accept="image/*"></input>
+							</p>
+							<p style="padding-top: 5px">
+							<button type="submit" class="btn btn-default">文本替换</button>
+							</p>										
+						</form>
+						</div>
+					</div>
+					</div>
+				<!-- </div> -->
+				<!-- <div class="col-sm-6 col-md-4"> -->
+					<div class="thumbnail"style="height: 400px; width: 100%">
+						<div class="media" style="height: 100%;width: 100%">
+						<div class="media-left" style="width: 56%">
+						<img id="img2" alt="100%x200" src="../Image/2_2.jpg" data-holder-rendered="true" style="width: 100%; display: block;">
+						</div>
+						<div class="media-right" style="width: 44%">
+							<form id="form2" method="post">
+							<br/>
+							标题：<input type="text" name="title" size="49" value=""><br/><br/>
+							内容：(200字以内)<br/><textarea name="content" rows="9" cols="57"></textarea><br/>
+							<p style="padding-top: 10px">
+							<input title="img2" type="file" name="image" onchange="fileclick(this)" accept="image/*"></input>
+							</p>
+							<p style="padding-top: 5px">
+							<button type="submit" class="btn btn-default">文本替换</button>
+							</p>
+							</form>
+						</div>
+						</div>						
+					</div>
+				<!-- </div> -->
+				<!-- <div class="col-sm-6 col-md-4"> -->
+        			<div class="thumbnail"style="height: 400px; width: 100%">
+						<div class="media" style="height: 100%;width: 100%">
+						<div class="media-left" style="width: 56%">
+						<img id="img3" alt="100%x200" src="../Image/3_3.jpg" data-holder-rendered="true" style="width: 100%; display: block;">
+						</div>
+						<div class="media-right" style="width: 44%">
+							<form id="form3" method="post">
+							<br/>
+							标题：<input type="text" name="title" size="49" value=""><br/><br/>
+							内容：(200字以内)<br/><textarea name="content" rows="9" cols="57"></textarea><br/>
+							<p style="padding-top: 10px">
+							<div class="file-box">
+							<!-- <input type='button' class='btn' value='图片替换' /> -->
+							<input title="img3" type="file" name="image" onchange="fileclick(this)" accept="image/*"></input>
+							</div>
+							</p>
+							<p style="padding-top: 5px">
+							<button type="submit" class="btn btn-default">文本替换</button>
+							</p>
+							</form>
+						</div>
+						</div>						
+					</div>
+      			<!-- </div> -->
+   			<!--  </div> -->
+		</div>
+	
+	
+	<script src="../js/jquery.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+    <script src="../js/plugins/JQuery_Form/jquery.form.js"></script>
+    <script src="../js/plugins/sweetalert/sweetalert.min.js"></script>
+    <script src="../js/content.js"></script>
+    <script type="text/javascript">
+    	FReader = new FileReader();
+    	var result,thisid;
+    	FReader.onload = function (oFREvent) {
+  			document.getElementById(thisid).src = oFREvent.target.result;
+		};
+    	function fileclick(item){
+    		thisid = item.title;
+    		FReader.readAsDataURL(item.files[0]);
+    	}
+    	$(document).ready(function(){
+    		$.ajax({
+    			type:"get",
+    			url:"../getCarousels.do",
+    			dataType:"json",
+    			success:function(data){
+    				if(data.length == 3){
+    					for(var i=0;i<3;i++){
+    						var imgid = "#img" + data[i].id,
+    							formid = "#form" + data[i].id;
+    						$(imgid).attr("src","../Image/"+data[i].imagename);
+    						$(formid).find("input:first")[0].value = data[i].title;
+    						$(formid).find("textarea")[0].value = data[i].content;
+    					}
+    				}
+    				else{
+    					swal("数据异常", "未获得数据！", "error");
+    				}
+    			},
+    			error:function(e,m,a){
+    				swal("服务器异常", "未连接服务器或服务器未返回有效数据！", "error");
+    			}
+    		});
+    		$("#form1").ajaxForm({
+    			url:"../Carousel.do",
+    			data:{id:1},
+    			dataType:"json",
+    			success:function(data){
+    				if(data.success){
+    					swal("修改成功", data.message, "success");
+    				}
+    				else{
+    					swal("修改失败", data.message, "error");
+    				}
+    			},
+    			error:function(e,m,a){
+    				swal("无法确定是否成功", "可能无法连接服务器，或者是服务器未返回指定数据格式，请刷新检查是否修改成功。", "warning");
+    			}
+    		});
+    		$("#form2").ajaxForm({
+    			url:"../Carousel.do",
+    			data:{id:2},
+    			dataType:"json",
+    			success:function(data){
+    				if(data.success){
+    					swal("修改成功", data.message, "success");
+    				}
+    				else{
+    					swal("修改失败", data.message, "error");
+    				}
+    			},
+    			error:function(e,m,a){
+    				swal("无法确定是否成功", "可能无法连接服务器，或者是服务器未返回指定数据格式，请刷新检查是否修改成功。", "warning");
+    			}
+    		});
+    		$("#form3").ajaxForm({
+    			url:"../Carousel.do",
+    			data:{id:3},
+    			dataType:"json",
+    			success:function(data){
+    				if(data.success){
+    					swal("修改成功", data.message, "success");
+    				}
+    				else{
+    					swal("修改失败", data.message, "error");
+    				}
+    			},
+    			error:function(e,m,a){
+    				swal("无法确定是否成功", "可能无法连接服务器，或者是服务器未返回指定数据格式，请刷新检查是否修改成功。", "warning");
+    			}
+    		});
+    	});
+	</script>
+  </html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Forecast</title>
+	<style type="text/css">
+		body {
+			padding: 45px 0;
+			font: 13px 'Open Sans', "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+			background: #1192d3;
+		}
+
+		#weather {
+			width: 425px;
+			margin: 0px auto;
+			text-align: center;
+			text-transform: uppercase;
+		}
+
+		#weather h2 {
+			margin: 0 0 8px;
+			color: #fff;
+			font-size: 150px;
+			font-weight: 300;
+			text-align: center;
+			text-shadow: 0px 1px 3px rgba(0, 0, 0, 0.15);
+		}
+
+		#weather ul {
+			margin: 0;
+			padding: 0;
+		}
+
+		#weather li {
+			background: #fff;
+			background: rgba(255,255,255,0.90);
+			padding: 20px;
+			display: inline-block;
+			border-radius: 5px;
+		}
+
+		#weather .currently {
+			margin: 0 20px;
+		}
+	</style>
+	<script src="./weather/jquery.min.js"></script>
+	<script src="./weather/jquery.simpleWeather.min.js"></script>
+</head>
+<body>
+	<div id="weather"></div>
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$.simpleWeather({
+    			woeid: '2357536', //2357536
+    			location: '',
+    			unit: 'f',
+    			success: function(weather) {
+    				html = '<h2>'+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+    				html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+    				html += '<li class="currently">'+weather.currently+'</li>';
+    				html += '<li>'+weather.alt.temp+'&deg;C</li></ul>';
+
+    				for(var i=0;i<weather.forecast.length;i++) {
+    					html += '<p>'+weather.forecast[i].day+': '+weather.forecast[i].high+'</p>';
+    				}
+
+    				$("#weather").html(html);
+    			},
+    			error: function(error) {
+    				$("#weather").html('<p>'+error+'</p>');
+    			}
+    		});
+		});
+	</script>
+</body>
+</html>

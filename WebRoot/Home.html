@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>防汛界面</title>
+	<link href="./CSS/bootstrap.min.css" rel="stylesheet">
+
+	<link rel="stylesheet" href="./CSS/leaflet.css">
+	<link href="./CSS/plugins/bootstrap-table/bootstrap-table.min.css" rel="stylesheet">
+	<link href="./CSS/plugins/sweetalert/sweetalert.css" rel="stylesheet">
+	<link href="./CSS/font-awesome.css" rel="stylesheet">
+	<link href="./CSS/style.css" rel="stylesheet">
+	<link href="./CSS/Home.css" rel="stylesheet">
+	<script src="./js/jquery.min.js"></script>
+    <script src="./js/bootstrap.min.js"></script>
+    <script src="./js/jquery.simpleWeather.min.js"></script>
+    <script src="./js/leaflet.js"></script>
+</head>
+<body>
+	<div id="first-row">
+		<div id="carousel-example-generic" class="carousel slide col-md-8" data-ride="carousel">
+			<!-- 轮播插件-->
+			<ol class="carousel-indicators">
+				<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+				<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+			</ol>
+
+			<!-- Wrapper for slides --><!-- 包装的幻灯片 -->
+			<div class="carousel-inner" role="listbox">
+				<div class="item active">
+					<img src="" alt="1 slide">
+					<div class="carousel-caption">
+						<h3></h3>
+						<p></p>
+						
+					</div>
+				</div>
+				<div class="item">
+					<img src="" alt="2 slide">
+					<div class="carousel-caption">
+						<h3></h3>
+						<p></p>
+						
+					</div>
+				</div>
+				<div class="item">
+					<img src="" alt="3 slide">
+					<div class="carousel-caption">
+						<h3></h3>
+						<p></p>
+						
+					</div>
+				</div>
+			</div>
+
+			<!-- Controls -->
+			<a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+				<!-- <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span> -->
+				<span class="sr-only">上一页</span>
+			</a>
+			<a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+				<!-- <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span> -->
+				<span class="sr-only">下一页</span>
+			</a>
+		</div>
+		
+		<div id="topnews" class="col-mds-4" style="padding: 20px 15px;overflow: hidden;border-bottom: white 28px;border-bottom-style: solid;">
+			<h3>新闻公告</h3>
+            <table id="exampleTablePagination"> </table>
+        </div>	
+	</div>
+	
+	<div class="container-fluid">
+		<div class="row">
+			<div id="weatherform" class="col-mds-4">
+				<!--iframe id = "weather" src="./Weather/Full_Demo.html"></iframe-->
+				<div id="weathers" class="container-fluid">
+					<ul class="list-inline">
+						<li class="icon-li">
+							<span id="weather-icon" class="icon"></span>
+						</li>
+						<li class="lines">
+							
+						</li>
+						<li class="weather-info">
+							<p class="weather-location">北京<!--span id="PM25-value" class="label label-success">Success</span--></p>
+ 							<p class="maininfo"><span id="descript-text">晴</span> <span id="lower-temp">2</span>&deg;C~<span id="higher-temp">14</span>&deg;C</p>
+							<p class="otherinfo"><span id="wind-direct">东南</span>风 <span id="wind-size">4到6级</span> 风寒指数：<span id="chill"></span></p>
+						</li>
+					</ul>
+					<table  id="forecast-table" align="center" class="table forecast" contenteditable="true">
+						<thead>
+							<tr>
+								<th colspan="3"><span id="Year">&nbsp;&nbsp;&nbsp;&nbsp;</span>年<span id="Mounth">&nbsp;&nbsp;</span>月<span id="Day">&nbsp;&nbsp;</span>日 &nbsp;&nbsp;星期<span id="Week">&nbsp;</span></th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr>
+								<th>星期<span id="firstday">&nbsp;</span></th>
+								<th>星期<span id="secondday">&nbsp;</span></th>
+								<th>星期<span id="thirdday">&nbsp;</span></th>
+							</tr>
+							<tr>
+								<td><span id="firsticon" class="forecast-icon"></span></td>
+								<td><span id="secondicon"class="forecast-icon"></span></td>
+								<td><span id="thirdicon" class="forecast-icon"></span></td>
+							</tr>
+							<tr>
+								<td>
+									<span id="first-descript-text">&nbsp;</span><br/>
+									<span id="first-low-temp">&nbsp;</span>&deg;C&nbsp;~ <span id="first-high-temp">&nbsp;</span>&deg;C
+								</td>
+								<td>
+									<span id="second-descript-text">&nbsp;</span><br/>
+									<span id="second-low-temp">&nbsp;</span>&deg;C&nbsp;~ <span id="second-high-temp">&nbsp;</span>&deg;C
+								</td>
+								<td>
+									<span id="third-descript-text">&nbsp;</span><br/>
+									<span id="third-low-temp">&nbsp;</span>&deg;C&nbsp;~ <span id="third-high-temp">&nbsp;</span>&deg;C
+								</td>
+							</tr>
+						</tbody>
+					</table>
+
+				</div>
+			</div>
+			<div id="infomap" class="col-mds-4 container-fluid">
+				<div id = "map" ></div>
+			</div>
+
+			<div id="newslist" class="col-mds-4">
+			<div style="width:100%;height:50%;float:left;">
+            	<div class="col-sm-12" style="height:100%;">
+                	<div class="widget style1 lazur-bg" style="height:98%;">
+                    	<div class="row">
+                        	<div class="col-xs-4 text-left" style="padding:0 0;">
+                            	<i class="fa fa-newspaper-o" style="font-size:8em;"></i>
+                        	</div>
+                        	<div class="col-xs-8 text-right" style="padding:0 0;">
+                            	<span style="font-size:2em;">防汛办新闻通知 </span>
+                            	<h2 id="NewsCount" class="font-bold" style="font-size:4em;"></h2>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+            	</div>
+            	<div style="width:100%;height:50%;float:left;">
+            	<div class="col-sm-12" style="height:100%;">
+                	<div class="widget style1 lazur-bg" style="height:98%;">
+                    	<div class="row">
+                        	<div class="col-xs-4 text-left" style="padding:0 0;">
+                            	<i class="fa fa-newspaper-o" style="font-size:8em;"></i>
+                        	</div>
+                        	<div class="col-xs-8 text-right" style="padding:0 0;">
+                            	<span style="font-size:2em;">其他新闻通知</span>
+                            	<h2 id="VideoCount" class="font-bold" style="font-size:4em;"></h2>
+                        	</div>
+                    	</div>
+                	</div>
+            	</div>
+            	</div>
+            </div>
+
+        </div>
+
+        <hr>
+    </div>
+   <script src="./js/plugins/bootstrap-table/bootstrap-table.min.js"></script>
+    <script src="./js/plugins/bootstrap-table/bootstrap-table-mobile.min.js"></script>
+    <script src="./js/plugins/bootstrap-table/locale/bootstrap-table-zh-CN.min.js"></script>
+    <script src="./js/plugins/sweetalert/sweetalert.min.js"></script>
+      <script type="text/javascript">
+      if (top == this) {
+    	    var gohome = '<div class="gohome"><a class="animated bounceInUp" href="./" title="返回首页"><i class="fa fa-home"></i></a></div>';
+    	    $('body').append(gohome);
+    	    window.location.href='./';
+    	}
+      	var FullWith = 554,
+      	    FullHeight = 378,sca;
+      	var descript_text ={"0":"龙卷风","1":"热带风暴","2":"飓风","3":"强雷暴","4":"雷暴","5":"雨夹雪","6":"冰雹","7":"雪夹雹","8":"冻毛雨","9":"细雨","10":"冻雨","11":"阵雨","12":"阵雨","13":"小雪","14":"阵雪","15":"飞雪","16":"雪","17":"冰雹","18":"雨夹雪","19":"浮尘","20":"雾","21":"霾","22":"烟尘","23":"大风","24":"风","25":"寒冷","26":"多云","27":"多云","28":"多云","29":"多云","30":"多云","31":"晴","32":"晴","33":"晴","34":"晴","35":"冰雹","36":"炎热","37":"局部雷雨","38":"偶有雷雨","39":"局部雷阵雨","40":"零散阵雨","41":"大雪","42":"零星阵雪","43":"大雪","44":"部分多云","45":"雷阵雨","46":"阵雪","47":"局部雷阵雨"};
+      	var wind_direct = {"E":"东","S":"南","W":"西","N":"北","SE":"东南","SW":"西南","NW":"西北","NE":"东北","NNE":"北 东北","ENE":"东 东北","ESE":"东 东南","SSE":"南 东南","SSW":"南 西南","WSW":"西 西南","WNW":"西 西北","NNW":"北 西北"};
+      	var wind_size = [["无风","0","1"],["软风","1","6"],["轻风","6","12"],["微风","12","20"],["和风","20","29"],["清劲风","29","39"],["强风","39","50"],["疾风","50","62"],["大风","62","75"],["烈风","75","88"],["狂风","88","102"],["暴风","102","117"],["飓风","117","133"],["飓风","133","150"],["飓风","150","167"],["飓风","167","183"],["飓风","183","201"],["飓风","201","220"]];
+      	var MouthtoChinese = {"Jan":"1","Feb":"2","Mar":"3","Apr":"4","May":"5","Jun":"6","Jul":"7","Aug":"8","Sep":"9","Oct":"10","Nov":"11","Dec":"12"};
+      	var WeektoChinese = {"Mon":"一","Tue":"二","Wed":"三","Thu":"四","Fri":"五","Sat":"六","Sun":"日"};
+      	function re_load(){
+      		try{
+	      		$.simpleWeather({
+	      			location: '39.92,116.46',
+	      			woeid: '',
+	      			unit: 'c',
+	      			success: function(weather) {
+	      				var icon_class  = "icon icon-"+ weather.code,
+	      					descript_index = weather.code;
+	      				document.getElementById("weather-icon").className = icon_class;
+	      				document.getElementById("descript-text").innerHTML = descript_text[descript_index];
+	      				document.getElementById("lower-temp").innerHTML = weather.low;
+	      				document.getElementById("higher-temp").innerHTML = weather.high;
+	      				document.getElementById("wind-direct").innerHTML = wind_direct[weather.wind.direction];
+	      				for(var i=0;i<wind_size.length;i++){
+	      					var windspeed = parseFloat(weather.wind.speed),
+	      						maxspeed = parseInt(wind_size[i][2]),
+	      						minspeed = parseInt(wind_size[i][1]);
+	      					if(windspeed>=minspeed && windspeed<maxspeed){
+	      						document.getElementById("wind-size").innerHTML = wind_size[i][0];
+	      						i=wind_size.length;
+	      					} 
+	      				}
+	      				document.getElementById("chill").innerHTML = weather.wind.chill;
+	      				var dates = weather.forecast[0].date.split(" ");
+	      				document.getElementById("Year").innerHTML = dates[2];
+	      				document.getElementById("Day").innerHTML = dates[0];
+	      				document.getElementById("Mounth").innerHTML = MouthtoChinese[dates[1]];
+	      				document.getElementById("Week").innerHTML = WeektoChinese[weather.forecast[0].day];
+	      				document.getElementById("firstday").innerHTML = WeektoChinese[weather.forecast[1].day];
+	      				document.getElementById("secondday").innerHTML = WeektoChinese[weather.forecast[2].day];
+	      				document.getElementById("thirdday").innerHTML = WeektoChinese[weather.forecast[3].day];
+	      				var first_icon_class = "forecast-icon icon-"+weather.forecast[1].code,
+	      					second_icon_class = "forecast-icon icon-"+weather.forecast[2].code,
+	      					third_icon_class = "forecast-icon icon-"+weather.forecast[3].code,
+	      					first_descript_index = weather.forecast[1].code,
+	      					second_descript_index = weather.forecast[2].code,
+	      					third_descript_index = weather.forecast[3].code;
+	      				document.getElementById("firsticon").className = first_icon_class;
+	      				document.getElementById("secondicon").className = second_icon_class;
+	      				document.getElementById("thirdicon").className = third_icon_class;
+
+	      				document.getElementById("first-descript-text").innerHTML = descript_text[first_descript_index];
+	      				document.getElementById("second-descript-text").innerHTML = descript_text[second_descript_index];
+	      				document.getElementById("third-descript-text").innerHTML = descript_text[third_descript_index];
+
+	      				document.getElementById("first-low-temp").innerHTML = weather.forecast[1].low;
+	      				document.getElementById("first-high-temp").innerHTML = weather.forecast[1].high;
+	      				document.getElementById("second-low-temp").innerHTML = weather.forecast[2].low;
+	      				document.getElementById("second-high-temp").innerHTML = weather.forecast[2].high;
+	      				document.getElementById("third-low-temp").innerHTML = weather.forecast[3].low;
+	      				document.getElementById("third-high-temp").innerHTML = weather.forecast[3].high;
+						//console.log(weather);
+						/*html = '<h2><i id="icon" class="icon-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+						html += '<ul><li>'+weather.city+', '+weather.country+'</li>';
+						html += '<li class="currently">'+weather.currently+'</li>';
+						html += '<li>'+weather.wind.direction+' '+weather.wind.speed+' '+weather.units.speed+'</li></ul>';
+						
+						$("#weather").html(html);*/
+					},
+					error: function(error) {
+						$("#weathers").html('<h2 style="color:white;">'+error+'</h2>');
+					}
+				});
+			}
+			catch(e){
+				console.log(e);
+			}
+      	}
+      	function weatherresize(){
+      		var t = document.getElementById("weatherform");
+      		var scale = Math.min(t.scrollWidth/(FullWith*1.0),t.scrollHeight/(FullHeight*1.0));
+      		sca = scale;
+      		if(scale>1) scale = 1;
+      		$(".icon").css("font-size",260*scale + "px");
+      		$(".forecast-icon").css("font-size",60*scale + "px");
+      		$(".weather-location").css("font-size",35*scale + "px");
+      		$(".maininfo").css("font-size",30*scale + "px");
+      		$(".otherinfo").css("font-size",18*scale + "px");
+      		$(".forecast").css("font-size",14*scale + "px");
+      		$("#PM25-value").css("font-size",10*scale + "px");
+      	}
+
+      	$(document).ready(function(){
+      		try{
+      			re_load();
+      			weatherresize();
+      		}
+      		catch(err){
+      			console.log(err);
+      			$("#weather").html('<h2 style="color:white;">接收天气数据失败！</h2>');
+      		}
+      		$.ajax({
+    			type:"get",
+    			url:"./getCarousels.do",
+    			dataType:"json",
+    			success:function(data){
+    				if(data.length == 3){
+    					var elements = $(".carousel-inner").find(".item");
+    					for(var i=0;i<3;i++){
+    						elements.find("img")[i].src = ("src","./Image/"+data[i].imagename);
+    						elements.find("h3")[i].innerHTML = (data[i].title);
+    						elements.find("p")[i].innerHTML = (data[i].content);
+    					}
+    				}
+    				else{
+    					swal("轮播数据异常！", "未获得完整数据！", "error");
+    				}
+    			},
+    			error:function(e,m,a){
+    				swal("服务器异常", "未连接服务器或服务器未返回有效数据！", "error");
+    			}
+    		});
+      		/* $.ajax({
+				url:"./VideoPreview.do",
+				dataType:"json",
+				success:function(result){
+					
+					$("#VideoCount").html(result.initialPreview.length);
+					
+				},
+				error:function(e,a,b){
+					//console.log(e);
+				}
+			}); */
+      		
+      		$.ajax({
+      			url:"./Downloadpage.do",
+      			//data:{"data":"123"},
+      			dataType:"text",
+      			success:function(data){
+      				var s1 = data.split("class=\"ind_Left_border\"");
+      				var startindex = s1[2].indexOf("http");
+      				var endindex = s1[2].indexOf("jpg")+3;
+      				var s2 = s1[2].substring(startindex,endindex).split("src=\"");
+      				console.log(s2[1]);
+      				$("#map").css("background-image","url("+s2[1]+")");
+      				$("#map").css("background-position","-450px -300px");
+      				
+      			},
+      			error:function(e){
+      				//console.log(e);
+      			}
+      		});
+      	});
+
+      	$(window).resize(function(){                      //resize:对浏览器窗口调整大小进行计数
+      		weatherresize();
+      	});
+      	$.ajax({
+            url:"./News.do",
+            dataType:"text",
+            success:function(result){
+                var data = eval(result);
+                $("#NewsCount").html(data.length);
+                var j=0;
+                for(var i=0;i<data.length;i++){
+                	data[i].time = data[i].time.split(" ")[0];
+                	if(data[i].apart != "西城区防汛办"){
+                		j++;
+                	}
+                }
+                $("#VideoCount").html(j);
+                $.extend($.fn.bootstrapTable.columnDefaults, {
+                    sortable: true
+                });
+
+                $('#exampleTablePagination').bootstrapTable({
+                    data:data,
+                    search: false,
+                    pagination: false,
+                    showRefresh: false,
+                    showToggle: false,
+                    showColumns: false,
+                    showHeader:false,
+                    iconSize: 'outline',
+                    sortName:'time',
+                    sortOrder:'desc',
+                    pageList:[10,15,20],
+                    undefinedText:"数据异常！",
+                    toolbar: '#exampleTableEventsToolbar',
+                    icons: {
+                        refresh: 'glyphicon-repeat',
+                        toggle: 'glyphicon-list-alt',
+                        columns: 'glyphicon-list'
+                    },
+                    columns: [
+                    {
+                        field: 'title',
+                        title: '新闻标题',
+
+                        cellStyle:function cellStyle(value, row, index, field) {
+                            return {
+                                css: {"border": "0px solid #e4eaec","width":"200px","text-align": "left","padding": "2px!important"}
+                            };
+                        },
+                        formatter:function(value,row,index){
+                        	value = "<span class = 'glyphicon glyphicon-paperclip'>&nbsp;</span><a href='News/news.html?id="+row.iD+"'>"+value+"</a>";
+                        	return value;
+                        }
+                    }, 
+                    {
+                        field: 'time',
+                        title: '发布时间',
+                        
+                        cellStyle:function cellStyle(value, row, index, field) {
+                            return {
+                                css: {"border": "0px solid #e4eaec", "width":"60px",
+                                "text-align":"right","padding": "2px!important","padding-right": "10px!important" }
+                            };
+                        }
+                    }
+                    ]
+                });
+            },
+            error:function(){
+            }
+        });
+      </script>
+      <!-- <script src="./js/XCData.js"></script> -->
+      <script>
+      	/* var map = L.map('map').setView([39.92, 116.35],11);
+      	var tilelayer = L.tileLayer('https://4.maps.nlp.nokia.com/maptile/2.1/maptile/newest/satellite.day/{z}/{x}/{y}/256/jpg?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24', {
+      		maxZoom: 18,
+      		foo:'far',
+      		//https://cartodb-basemaps-b.global.ssl.fastly.net/light_all/{z}/{x}/{y}.png
+      		//https://4.maps.nlp.nokia.com/maptile/2.1/maptile/newest/satellite.day/12/3374/1553/256/jpg?lg=eng&token=A7tBPacePg9Mj_zghvKt9Q&app_id=KuYppsdXZznpffJsKT24
+      	}).addTo(map);
+      	var drawdata = [];
+      	for(var i=0;i<XC_Data.length;i++){
+      		drawdata.push([XC_Data[i][1],XC_Data[i][0]]);
+      	}
+      	L.polyline(drawdata,{color:'red',weight:5}).addTo(map); */
+      </script>
+  </body>
+  </html>

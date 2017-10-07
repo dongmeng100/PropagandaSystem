@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>防汛界面</title>
+        <link href="../CSS/bootstrap.min.css" rel="stylesheet">
+        <link href="../CSS/info.css" rel="stylesheet">
+        <link href="../CSS/layout.css" rel="stylesheet">
+        <style>
+            iframe{
+                left: 10%;
+                position: absolute;
+                width: 80%;
+                height: 1400px;
+                min-height: 720px;
+                min-width: 1024px;
+                top: -16%;
+            }
+            #content{
+            	left: 10%;
+            	width: 80%;
+            }
+      </style>
+    </head>
+    <body>
+        <div id="content" class="container-fluid">
+        <!--添加新闻内容-->
+        
+        <!-- <iframe src="http://bjfx.gov.cn/xqzx/index.htm"></iframe> -->
+
+        </div>
+
+        <script src="../js/jquery.min.js"></script>
+        <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/content.js"></script>
+        <script>
+        	$.ajax({
+        		url:"../download.html",
+        		dataType:"text",
+        		success:function(data){
+        			$("#content").html(data);
+        			//console.log(data);
+        		},
+        		error:function(e){
+        			console.log(e);
+        		}
+        	});
+        	//Tab切换1
+        	function change_tab_1(tab_id,id,allid){
+        	    for (var i=1; i<=allid; i++)
+        	    {
+        	        if(i==id){
+        			    document.getElementById("Ind_tab_"+tab_id+"_"+i).style.display = "block";
+        			    document.getElementById("Ind_font_"+tab_id+"_"+i).className = "current";
+        			}else{
+        	            document.getElementById("Ind_tab_"+tab_id+"_"+i).style.display = "none";
+        			    document.getElementById("Ind_font_"+tab_id+"_"+i).className = "";
+        			}
+        	    }
+        	}
+
+        	//Tab切换1
+        	function change_tab_2(tab_id, id, allid) {
+        	    for (var i = 1; i <= allid; i++) {
+        	        if (i == id) {
+        	            document.getElementById("Fnd_tab_" + tab_id + "_" + i).style.display = "block";
+        	            document.getElementById("Fnd_font_" + tab_id + "_" + i).className = "current";
+        	        } else {
+        	            document.getElementById("Fnd_tab_" + tab_id + "_" + i).style.display = "none";
+        	            document.getElementById("Fnd_font_" + tab_id + "_" + i).className = "";
+        	        }
+        	    }
+        	}
+        </script>
+    </body>
+</html>
